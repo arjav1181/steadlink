@@ -1,0 +1,18 @@
+{
+  "name": "@golink/worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node --experimental-strip-types src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@golink/db": "workspace:*",
+    "pg-boss": "12.38.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "7.0.2"
+  }
+}

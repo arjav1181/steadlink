@@ -1,0 +1,23 @@
+{
+  "name": "@golink/data",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "seed": "node --experimental-strip-types src/seed.ts",
+    "test": "node --experimental-strip-types src/test-isolation.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "typescript": "7.0.2"
+  },
+  "dependencies": {
+    "@golink/db": "workspace:*",
+    "drizzle-orm": "0.45.4",
+    "postgres": "3.4.9"
+  }
+}

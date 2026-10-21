@@ -1,0 +1,16 @@
+node_modules
+.next
+.turbo
+dist
+out
+coverage
+.data
+*.log
+.env
+.env.local
+.env.*.local
+.git
+.gitignore
+.DS_Store
+docker/postgres-init.sql
+README.md

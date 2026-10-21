@@ -1,0 +1,78 @@
+@import "tailwindcss";
+@import "./theme.css";
+
+/* Tailwind v4 auto-detects sources from the CSS file's location up to the
+   git root. In a workspace that is the sandbox root, not the app, so the
+   component package is not scanned and its classes never get generated.
+   Declare the sources explicitly.
+
+   These must be the first rules in the first stylesheet of the chain, or
+   Tailwind warns that a @source directive came after other rules. */
+@source "./**/*.{ts,tsx}";
+@source "../../../apps/web/src/**/*.{ts,tsx}";
+
+/* ---------------------------------------------------------------------------
+   GoLink base layer.
+   Element defaults only. Every component class in this package is a Tailwind
+   utility composition of the semantic roles in theme.css - there are no raw
+   hex values below this line.
+   --------------------------------------------------------------------------- */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* One focus ring for the whole system. Never removed - only restyled. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background-color: var(--color-accent-soft);
+    color: var(--color-text);
+  }
+
+  /* Respect the OS setting. Every transition collapses, every transform
+     stops, every animation becomes a no-op. */
+  @media (prefers-reduced-motion: reduce) {
+    /* !important is required here: this override has to beat every
+       transition in the system, including utilities with higher specificity. */
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Screen-reader-only text. Not display:none - it must stay in the
+     accessibility tree. */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792495907360,
+      "tag": "0000_gray_starfox",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792492896000,
+      "tag": "0001_row_level_security",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792496914543,
+      "tag": "0002_wild_christian_walker",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792497059375,
+      "tag": "0003_misty_robbie_robertson",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792498000000,
+      "tag": "0004_grants_for_the_late_tables",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1792498100000,
+      "tag": "0005_the_tables_the_policies_cannot_protect",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1792498200000,
+      "tag": "0006_the_default_plan",
+      "breakpoints": true
+    }
+  ]
+}

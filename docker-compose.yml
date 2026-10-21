@@ -1,0 +1,71 @@
+# GoLink, self-hosted.
+#
+#   docker compose up -d
+#
+# Three services: the database, the app, and the worker. The app serves the
+# short links and the dashboard; the worker runs the scheduled jobs.
+#
+# Before the first run, change the two passwords below. They are the only
+# thing standing between the internet and the database.
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: golink
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./docker/postgres-init.sql:/docker-entrypoint-initdb.d/10-roles.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d golink"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # The migrations need the superuser; the app does not.
+      DATABASE_MIGRATION_URL: postgres://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/golink
+      DATABASE_URL: postgres://golink:golink@postgres:5432/golink
+      DATABASE_APP_ROLE: golink
+      APP_URL: ${APP_URL:-http://localhost:3210}
+      BETTER_AUTH_URL: ${APP_URL:-http://localhost:3210}
+      # Generate one: node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?set BETTER_AUTH_SECRET in .env}
+      DEFAULT_SHORT_DOMAIN: ${DEFAULT_SHORT_DOMAIN:-go.arjav.is-cool.dev}
+      REQUIRE_EMAIL_VERIFICATION: ${REQUIRE_EMAIL_VERIFICATION:-false}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      SMTP_FROM: ${SMTP_FROM:-GoLink <no-reply@example.com>}
+    ports:
+      - "${APP_PORT:-3210}:3210"
+    volumes:
+      - geoip-data:/data/geoip
+
+  worker:
+    build: .
+    restart: unless-stopped
+    command: ["pnpm", "--filter", "@golink/worker", "start"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_MIGRATION_URL: postgres://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/golink
+      DATABASE_URL: postgres://golinkworker:golinkworker@postgres:5432/golink
+      DATABASE_WORKER_ROLE: golinkworker
+      BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?set BETTER_AUTH_SECRET in .env}
+      WORKER_CONCURRENCY: ${WORKER_CONCURRENCY:-4}
+
+volumes:
+  postgres-data:
+  geoip-data:

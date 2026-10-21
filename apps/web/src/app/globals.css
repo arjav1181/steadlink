@@ -1,0 +1,5 @@
+/* App-level styles. Everything else comes from @golink/ui/styles.css. */
+
+body {
+  margin: 0;
+}

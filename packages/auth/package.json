@@ -1,0 +1,24 @@
+{
+  "name": "@golink/auth",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "generate": "better-auth generate",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@golink/db": "workspace:*",
+    "better-auth": "1.7.11",
+    "@golink/email": "workspace:*",
+    "@better-auth/api-key": "1.7.11"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "drizzle-kit": "0.31.11",
+    "typescript": "7.0.2"
+  }
+}

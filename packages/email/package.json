@@ -1,0 +1,22 @@
+{
+  "name": "@golink/email",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@golink/db": "workspace:*",
+    "nodemailer": "10.1.7",
+    "postgres": "3.4.9"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/nodemailer": "^7.0.4",
+    "typescript": "7.0.2"
+  }
+}

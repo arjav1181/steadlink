@@ -1,0 +1,26 @@
+node_modules/
+.next/
+.turbo/
+dist/
+out/
+build/
+
+# The build artefacts of the type checker.
+*.tsbuildinfo
+
+# The local data store the first version of the data layer used.
+.data/
+
+# The end-to-end suite: the results, the report and the saved sessions.
+e2e-results/
+e2e-report/
+e2e/.auth/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Editors and operating systems
+.DS_Store
+*.swp
