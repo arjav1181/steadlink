@@ -1,5 +1,5 @@
 import { makeTest } from "./spec.ts";
-import { expect, expectNoErrors, signIn } from "./support.ts";
+import { axeCheck, expect, expectNoErrors, signIn } from "./support.ts";
 
 const test = makeTest();
 
@@ -21,6 +21,20 @@ test.describe("F10 pages", () => {
       "The link you printed still works.",
     );
     await expect(page.getByRole("link", { name: "Make a link" }).first()).toBeVisible();
+
+    // The launch page has to carry the whole argument: the problem, the
+    // mechanism, the price of running it, and the answers to the objections.
+    await expect(page.getByRole("heading", { name: "A link is a promise with a date on it." })).toBeVisible();
+    await expect(
+      page.getByRole("img", { name: /Steadlink dashboard/i }),
+    ).toBeVisible();
+    await expect(page.getByRole("heading", { name: "What it costs" })).toBeVisible();
+    await expect(page.getByText(/nothing per click/i).first()).toBeVisible();
+    await expect(
+      page.getByText("Does anything appear between the click and the destination?"),
+    ).toBeVisible();
+
+    await axeCheck(page);
     expectNoErrors(errors);
   });
 

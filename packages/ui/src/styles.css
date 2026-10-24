@@ -12,7 +12,7 @@
 @source "../../../apps/web/src/**/*.{ts,tsx}";
 
 /* ---------------------------------------------------------------------------
-   GoLink base layer.
+   Steadlink base layer.
    Element defaults only. Every component class in this package is a Tailwind
    utility composition of the semantic roles in theme.css - there are no raw
    hex values below this line.

@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 const SECTIONS = [
   { href: "/settings", label: "Profile" },
-  { href: "/settings/usage", label: "Billing and usage" },
+  { href: "/settings/usage", label: "Usage" },
   { href: "/settings/users", label: "People and groups" },
   { href: "/domains", label: "Custom domains" },
   { href: "/settings/webhooks", label: "Webhooks" },

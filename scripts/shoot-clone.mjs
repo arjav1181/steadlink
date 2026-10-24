@@ -127,7 +127,7 @@ const SCREENS = {
   S40: { route: "/campaigns", name: "campaign create", open: { role: "button", name: /new campaign/i } },
   S42: { route: "/domains", name: "custom domains" },
   S43: { route: "/settings", name: "settings profile" },
-  S44: { route: "/settings/usage", name: "billing and usage" },
+  S44: { route: "/settings/usage", name: "usage" },
   S45: { route: "/settings/users", name: "users and groups" },
   S46: { route: "/settings/sso", name: "sso" },
   S47: { route: "/settings/deeplinks", name: "mobile deep links" },

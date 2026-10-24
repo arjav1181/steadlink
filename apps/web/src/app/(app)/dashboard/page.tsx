@@ -6,7 +6,7 @@ import {
   listDomains,
   rangeFromDays,
 } from "@steadlink/data";
-import { Badge, Button, Card, Chip } from "@steadlink/ui";
+import { Button, Card, Chip } from "@steadlink/ui";
 import { ArrowRight, Link2, Plus, QrCode, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { EngagementChart } from "@/components/engagement-chart";
@@ -24,7 +24,6 @@ export default async function DashboardPage() {
     getWeeklyInsights(ctx),
   ]);
 
-  const quota = usage.plan.limits.links - usage.usage.links;
   const delta = overview.previousTotal
     ? Math.round(((overview.total - overview.previousTotal) / overview.previousTotal) * 100)
     : 0;
@@ -63,13 +62,6 @@ export default async function DashboardPage() {
                 <h2 className="text-lg font-semibold text-foreground">Quick create</h2>
                 <p className="mt-0.5 text-sm text-muted">Paste a URL and share it in seconds.</p>
               </div>
-              {quota > 0 ? (
-                <Badge tone={quota <= 10 ? "warning" : "neutral"}>
-                  {formatNumber(quota)} links left this month
-                </Badge>
-              ) : (
-                <Badge tone="danger">Monthly limit reached</Badge>
-              )}
             </div>
             <div className="mt-5">
               <QuickCreate
@@ -179,18 +171,17 @@ export default async function DashboardPage() {
           </Card>
 
           <Card className="p-6">
-            <h2 className="text-lg font-semibold text-foreground">This month</h2>
+            <h2 className="text-lg font-semibold text-foreground">In this workspace</h2>
             <dl className="mt-4 space-y-3">
               {[
-                { label: "Links", value: usage.usage.links, limit: usage.plan.limits.links },
-                { label: "QR codes", value: usage.usage.qrCodes, limit: usage.plan.limits.qrCodes },
-                { label: "Pages", value: usage.usage.pages, limit: usage.plan.limits.pages },
+                { label: "Links", value: usage.usage.links },
+                { label: "QR codes", value: usage.usage.qrCodes },
+                { label: "Pages", value: usage.usage.pages },
               ].map((row) => (
                 <div key={row.label} className="flex items-baseline justify-between gap-3">
                   <dt className="text-sm text-muted">{row.label}</dt>
                   <dd className="text-sm font-semibold tabular-nums text-foreground">
                     {formatCompact(row.value)}
-                    <span className="font-normal text-muted"> / {formatCompact(row.limit)}</span>
                   </dd>
                 </div>
               ))}

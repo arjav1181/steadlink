@@ -30,6 +30,19 @@ between, no ad, no countdown. The link you printed still works.
 - **Mobile deep links** and **dynamic routing**, so one address can send
   people to different places.
 
+## What is not here yet
+
+The list is short and it is here so nobody has to find out the hard way:
+
+- **No import.** Links export as a CSV; bringing a workspace in from another
+  shortener is the next thing being built.
+- **No mobile app.** The web app is responsive and installable; there is no
+  iOS or Android binary.
+- **No hosted service.** Self-hosting is the product, not a downgrade of one.
+- **SSO is partial.** SAML is configured, not finished.
+- **Webhook endpoint verification is partial.**
+- **No bulk QR creation**, and no PDF or image export of a dashboard.
+
 ## The stack
 
 | | |
