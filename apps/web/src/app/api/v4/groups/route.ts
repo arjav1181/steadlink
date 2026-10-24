@@ -6,7 +6,7 @@
  * apart from another's.
  */
 
-import { createGroup, getGroups } from "@golink/data";
+import { createGroup, getGroups } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import { handle, json, optionalString, requireString } from "@/server/api-response";

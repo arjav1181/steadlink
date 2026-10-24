@@ -1,5 +1,5 @@
-import { checkLink } from "@golink/data";
-import { Badge, Button } from "@golink/ui";
+import { checkLink } from "@steadlink/data";
+import { Badge, Button } from "@steadlink/ui";
 import { ArrowRight, Link2, Search } from "lucide-react";
 import { headers } from "next/headers";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import Link from "next/link";
 import { addressOf, take } from "@/server/rate-limit";
 
 export const metadata = {
-  title: "Check a short link — GoLink",
+  title: "Check a short link — Steadlink",
   description: "See where a short link points before you follow it.",
 };
 
@@ -125,7 +125,7 @@ export default async function CheckPage({
 
         <p className="mt-10 text-sm text-muted">
           <Link href="/" className="font-semibold text-accent hover:underline">
-            GoLink
+            Steadlink
           </Link>{" "}
           is a self-hosted short link service. This page only reads a link; it does not change one.
         </p>

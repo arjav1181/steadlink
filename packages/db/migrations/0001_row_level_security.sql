@@ -1,8 +1,8 @@
 -- ============================================================================
 --  Row level security.
 --
---  The app connects as `golink_app`, which is subject to these policies. The
---  worker connects as `golink_worker`, which has BYPASSRLS, because the
+--  The app connects as `steadlink_app`, which is subject to these policies. The
+--  worker connects as `steadlink_worker`, which has BYPASSRLS, because the
 --  rollups and the sweeps have to cross organizations.
 --
 --  Every request sets the transaction-local setting:
@@ -355,10 +355,10 @@ create policy deleted_accounts_service on deleted_accounts for all using (true) 
 -- ---------------------------------------------------------------------------
 -- Grants.
 -- ---------------------------------------------------------------------------
-grant usage on schema public to golink_app, golink_worker;
-grant select, insert, update, delete on all tables in schema public to golink_app, golink_worker;
-grant usage, select on all sequences in schema public to golink_app, golink_worker;
+grant usage on schema public to steadlink_app, steadlink_worker;
+grant select, insert, update, delete on all tables in schema public to steadlink_app, steadlink_worker;
+grant usage, select on all sequences in schema public to steadlink_app, steadlink_worker;
 
-revoke all on table deleted_accounts from golink_app;
-revoke all on table mail_outbox from golink_app;
+revoke all on table deleted_accounts from steadlink_app;
+revoke all on table mail_outbox from steadlink_app;
 

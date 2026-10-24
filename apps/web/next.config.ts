@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
   //
   // Transpiling the packages makes the directives real. The cost is a
   // slower build, and the build is a minute.
-  transpilePackages: ["@golink/ui", "lucide-react"],
+  transpilePackages: ["@steadlink/ui", "lucide-react"],
 
   turbopack: {
     // The monorepo root, not the git root. Without this, Turbopack resolves

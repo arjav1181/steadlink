@@ -8,7 +8,7 @@
  *
  *   node --experimental-strip-types packages/db/src/test-rls.ts
  *
- * It runs as `golink_app`, the role the application connects as, so the
+ * It runs as `steadlink_app`, the role the application connects as, so the
  * policies apply. The superuser would bypass them all, which would make the
  * test meaningless.
  *
@@ -42,7 +42,7 @@ function check(label: string, ok: boolean, detail = "") {
 async function countInScope(orgId: string | null, sqlText: string): Promise<number> {
   return client.begin(async (tx) => {
     // The application role, so the policies apply.
-    await tx.unsafe("set local role golink_app");
+    await tx.unsafe("set local role steadlink_app");
     if (orgId === null) {
       await tx.unsafe("select set_config('app.org_id', '', true)");
     } else {
@@ -120,7 +120,7 @@ async function main() {
   ): Promise<string> {
     const conn = postgres(process.env.DATABASE_URL!, { max: 1, prepare: false });
     try {
-      await conn.unsafe("set role golink_app");
+      await conn.unsafe("set role steadlink_app");
       await conn.unsafe(`select set_config('app.org_id', '${scopeOrgId}', false)`);
       await conn`
         insert into campaigns (org_id, group_id, name, created_by)

@@ -1,5 +1,5 @@
-import { getCtx, getPage, getPageMetrics, rangeFromDays } from "@golink/data";
-import { Badge, Card, StatCard } from "@golink/ui";
+import { getCtx, getPage, getPageMetrics, rangeFromDays } from "@steadlink/data";
+import { Badge, Card, StatCard } from "@steadlink/ui";
 import { ArrowLeft, ExternalLink, GripVertical } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";

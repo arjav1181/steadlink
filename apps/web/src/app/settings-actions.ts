@@ -1,6 +1,6 @@
 "use server";
 
-import { DataError, getCtx, updateProfile } from "@golink/data";
+import { DataError, getCtx, updateProfile } from "@steadlink/data";
 import { revalidatePath } from "next/cache";
 
 export interface SettingActionResult {

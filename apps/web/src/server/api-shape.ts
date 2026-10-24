@@ -10,7 +10,7 @@
  * returned and reshapes it.
  */
 
-import type { LinkWithMeta, Page, QrCode } from "@golink/data";
+import type { LinkWithMeta, Page, QrCode } from "@steadlink/data";
 
 /**
  * The host a short link is served from.

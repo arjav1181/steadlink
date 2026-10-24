@@ -1,4 +1,4 @@
-import { Card, PlanGate } from "@golink/ui";
+import { Card, PlanGate } from "@steadlink/ui";
 
 export const dynamic = "force-dynamic";
 

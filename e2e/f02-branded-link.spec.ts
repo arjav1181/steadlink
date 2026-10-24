@@ -20,7 +20,7 @@ test.describe("F02 branded links", () => {
     const dialog = page.getByRole("dialog");
     await dialog.getByLabel("Destination URL").fill("https://example.com/branded");
     await dialog.getByLabel("Back-half").fill("f02-default");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
 
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
     await expect(page.getByText(new RegExp(DEFAULT_DOMAIN)).first()).toBeVisible();
@@ -50,7 +50,7 @@ test.describe("F02 branded links", () => {
     let dialog = page.getByRole("dialog");
     await dialog.getByLabel("Destination URL").fill("https://example.com/one");
     await dialog.getByLabel("Back-half").fill("f02-shared");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
 
     await page.goto("/links?new=1");
@@ -59,7 +59,7 @@ test.describe("F02 branded links", () => {
     await page.getByRole("option", { name: /acme\.studio/ }).click();
     await dialog.getByLabel("Destination URL").fill("https://example.com/two");
     await dialog.getByLabel("Back-half").fill("f02-shared");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
 
     expectNoErrors(errors);
@@ -75,7 +75,7 @@ test.describe("F02 branded links", () => {
     let dialog = page.getByRole("dialog");
     await dialog.getByLabel("Destination URL").fill("https://example.com/burnt");
     await dialog.getByLabel("Back-half").fill("f02-burnt");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
 
     // Delete it.
@@ -89,7 +89,7 @@ test.describe("F02 branded links", () => {
     dialog = page.getByRole("dialog");
     await dialog.getByLabel("Destination URL").fill("https://example.com/burnt-again");
     await dialog.getByLabel("Back-half").fill("f02-burnt");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
 
     expectNoErrors(errors);

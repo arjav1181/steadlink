@@ -6,7 +6,7 @@
  * in-memory store to PostgreSQL, so no screen had to change.
  */
 
-export type { Action, Database, Role, Scope, ScopedDb } from "@golink/db";
+export type { Action, Database, Role, Scope, ScopedDb } from "@steadlink/db";
 export {
   db,
   ForbiddenError,
@@ -14,7 +14,7 @@ export {
   scopeFor,
   sql,
   withScope,
-} from "@golink/db";
+} from "@steadlink/db";
 export * from "./api.ts";
 export { checkDnsRecords, type DnsRecord, type DnsResult } from "./dns.ts";
 export { readSession, type SessionIdentity, setSessionReader } from "./session.ts";

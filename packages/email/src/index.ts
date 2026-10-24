@@ -35,7 +35,7 @@ export interface Mail {
  * Templates. Written fresh; none of them are taken from anywhere.
  * ------------------------------------------------------------------------- */
 
-const BRAND = "GoLink";
+const BRAND = "Steadlink";
 
 function shell(heading: string, body: string, action?: { label: string; url: string }): string {
   return `<!doctype html>
@@ -49,11 +49,11 @@ function shell(heading: string, body: string, action?: { label: string; url: str
           <div style="margin:0 0 24px;font-size:15px;line-height:1.6;color:#5b6470">${body}</div>
           ${
             action
-              ? `<p style="margin:0 0 24px"><a href="${action.url}" style="display:inline-block;background:#2f3a4a;color:#ffffff;text-decoration:none;font-size:15px;font-weight:600;padding:12px 20px;border-radius:8px">${action.label}</a></p>
+              ? `<p style="margin:0 0 24px"><a href="${action.url}" style="display:inline-block;background:#0c5b4a;color:#ffffff;text-decoration:none;font-size:15px;font-weight:600;padding:12px 20px;border-radius:8px">${action.label}</a></p>
                  <p style="margin:0 0 24px;font-size:13px;color:#8a9099">If the button does not work, copy this into your browser:<br><span style="font-family:ui-monospace,Menlo,monospace">${action.url}</span></p>`
               : ""
           }
-          <p style="margin:0;font-size:13px;line-height:1.6;color:#8a9099">You are getting this because someone set up a ${BRAND} workspace with this address. If that was not you, you can ignore this message.</p>
+          <p style="margin:0;font-size:13px;line-height:1.6;color:#8a9099">You are getting this because someone set up an ${BRAND} workspace with this address. If that was not you, ignore this message.</p>
         </td></tr>
       </table>
     </td></tr>
@@ -181,7 +181,7 @@ export async function send(mail: Mail): Promise<{ delivered: boolean; reason?: s
 
   try {
     await smtp.sendMail({
-      from: process.env.SMTP_FROM ?? `GoLink <no-reply@${process.env.SMTP_HOST}>`,
+      from: process.env.SMTP_FROM ?? `Steadlink <no-reply@${process.env.SMTP_HOST}>`,
       to: mail.to,
       subject: mail.subject,
       html: mail.html,

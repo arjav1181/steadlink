@@ -1,4 +1,4 @@
-import { getPageBySlug, recordPageView } from "@golink/data";
+import { getPageBySlug, recordPageView } from "@steadlink/data";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
@@ -118,7 +118,7 @@ export default async function PublicPage({ params }: { params: Promise<{ slug: s
           <Block key={block.id} block={block} />
         ))}
         <footer className="px-6 pt-10 pb-6 text-center text-xs text-foreground/50">
-          <span>Made with GoLink</span>
+          <span>Made with Steadlink</span>
         </footer>
       </div>
     </main>

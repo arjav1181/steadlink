@@ -1,7 +1,7 @@
 import { Archive, Clock, FileQuestion } from "lucide-react";
 import Link from "next/link";
 
-export const metadata = { title: "This link is not available — GoLink" };
+export const metadata = { title: "This link is not available — Steadlink" };
 export const dynamic = "force-dynamic";
 
 const REASONS = {

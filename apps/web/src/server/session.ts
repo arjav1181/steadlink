@@ -10,8 +10,8 @@
  * verify the signature as well, and getting that wrong is a way in.
  */
 
-import { getAuth } from "@golink/auth";
-import { setSessionReader } from "@golink/data";
+import { getAuth } from "@steadlink/auth";
+import { setSessionReader } from "@steadlink/data";
 import { cookies, headers } from "next/headers";
 
 /**
@@ -22,7 +22,7 @@ import { cookies, headers } from "next/headers";
  * workspace and in different groups at the same time, and switching
  * groups should not change what the account is.
  */
-export const GROUP_COOKIE = "golink.group";
+export const GROUP_COOKIE = "steadlink.group";
 
 setSessionReader(async () => {
   const result = await getAuth().api.getSession({ headers: await headers() });

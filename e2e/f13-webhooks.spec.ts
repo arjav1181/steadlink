@@ -118,7 +118,7 @@ test.describe("F14 API tokens", () => {
     const other = await fresh.newPage();
     await other.goto("/sign-in");
     await other.getByLabel("Email").fill("mira@example.com");
-    await other.getByLabel("Password").fill("golink-demo-password");
+    await other.getByLabel("Password").fill("steadlink-demo-password");
     await other.getByRole("button", { name: "Sign in" }).click();
     await other.waitForURL(/\/(dashboard|links)/, { timeout: 20_000 });
     await other.goto("/links");

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, DropdownMenu, Modal } from "@golink/ui";
+import { Button, DropdownMenu, Modal } from "@steadlink/ui";
 import { Archive, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import * as React from "react";

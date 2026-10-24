@@ -1,6 +1,6 @@
 "use server";
 
-import { getAuth } from "@golink/auth";
+import { getAuth } from "@steadlink/auth";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 

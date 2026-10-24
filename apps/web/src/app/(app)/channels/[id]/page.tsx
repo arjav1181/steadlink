@@ -1,5 +1,5 @@
-import { getChannelMetrics, getCtx, listChannels, rangeFromDays } from "@golink/data";
-import { Badge, Card, StatCard } from "@golink/ui";
+import { getChannelMetrics, getCtx, listChannels, rangeFromDays } from "@steadlink/data";
+import { Badge, Card, StatCard } from "@steadlink/ui";
 import { notFound } from "next/navigation";
 
 import { formatNumber } from "@/lib/format";
@@ -67,7 +67,7 @@ export default async function ChannelDetailPage({ params }: { params: Promise<{ 
           splits itself.
         </p>
         <p className="mt-3">
-          <Badge tone="neutral">utm_medium is always golink</Badge>
+          <Badge tone="neutral">utm_medium is always steadlink</Badge>
         </p>
       </Card>
     </div>

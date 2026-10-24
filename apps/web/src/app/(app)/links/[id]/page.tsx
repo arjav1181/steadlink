@@ -5,8 +5,8 @@ import {
   getRoutingRules,
   listDeeplinks,
   rangeFromDays,
-} from "@golink/data";
-import { Badge, Card, CopyButton, ShareButton, Tag as TagChip } from "@golink/ui";
+} from "@steadlink/data";
+import { Badge, Card, CopyButton, ShareButton, Tag as TagChip } from "@steadlink/ui";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";

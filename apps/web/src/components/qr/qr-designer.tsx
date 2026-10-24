@@ -14,7 +14,7 @@ import {
   Stepper,
   TextInput,
   Toggle,
-} from "@golink/ui";
+} from "@steadlink/ui";
 import { useRouter, useSearchParams } from "next/navigation";
 import * as React from "react";
 

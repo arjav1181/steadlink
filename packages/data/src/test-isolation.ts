@@ -17,7 +17,7 @@
  * workspaces, and calls the same functions the screens call.
  */
 
-import { sql } from "@golink/db";
+import { sql } from "@steadlink/db";
 import {
   listActivity,
   listBulkUploads,

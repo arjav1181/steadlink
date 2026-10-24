@@ -1,4 +1,4 @@
-import { RESERVED_CODES } from "@golink/data";
+import { RESERVED_CODES } from "@steadlink/data";
 import { type NextRequest, NextResponse } from "next/server";
 
 import { factsFromHeaders, logEngagement, resolve } from "@/server/redirect";

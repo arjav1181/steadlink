@@ -1,6 +1,6 @@
 "use client";
 
-import type { Group } from "@golink/data";
+import type { Group } from "@steadlink/data";
 import { Folder } from "lucide-react";
 import { useRouter } from "next/navigation";
 import * as React from "react";
@@ -43,7 +43,7 @@ export function GroupSwitcher({ groups, active }: { groups: Group[]; active: Gro
 
   return (
     <div className="flex items-center gap-2">
-      <Folder aria-hidden="true" className="size-4 text-muted" />
+      <Folder aria-hidden="true" className="hidden size-4 text-muted sm:block" />
       <label htmlFor="group-switcher" className="text-sm text-muted">
         Group
       </label>
@@ -53,7 +53,7 @@ export function GroupSwitcher({ groups, active }: { groups: Group[]; active: Gro
         value={currentId}
         disabled={busy}
         onChange={(event) => void choose(event.target.value)}
-        className="h-8 max-w-40 truncate rounded-sm border border-input bg-surface px-2 text-sm text-foreground focus:outline-none focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-60"
+        className="h-8 max-w-28 truncate rounded-sm border border-input bg-surface px-2 text-sm text-foreground focus:outline-none focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-60 sm:max-w-40"
       >
         {groups.map((group) => (
           <option key={group.id} value={group.id}>

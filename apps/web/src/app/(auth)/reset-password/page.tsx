@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Field, TextInput } from "@golink/ui";
+import { Button, Field, TextInput } from "@steadlink/ui";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import * as React from "react";

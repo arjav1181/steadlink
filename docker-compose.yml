@@ -1,4 +1,4 @@
-# GoLink, self-hosted.
+# Steadlink, self-hosted.
 #
 #   docker compose up -d
 #
@@ -15,12 +15,12 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      POSTGRES_DB: golink
+      POSTGRES_DB: steadlink
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ./docker/postgres-init.sql:/docker-entrypoint-initdb.d/10-roles.sql:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d golink"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d steadlink"]
       interval: 5s
       timeout: 5s
       retries: 12
@@ -33,9 +33,9 @@ services:
         condition: service_healthy
     environment:
       # The migrations need the superuser; the app does not.
-      DATABASE_MIGRATION_URL: postgres://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/golink
-      DATABASE_URL: postgres://golink:golink@postgres:5432/golink
-      DATABASE_APP_ROLE: golink
+      DATABASE_MIGRATION_URL: postgres://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/steadlink
+      DATABASE_URL: postgres://steadlink:steadlink@postgres:5432/steadlink
+      DATABASE_APP_ROLE: steadlink
       APP_URL: ${APP_URL:-http://localhost:3210}
       BETTER_AUTH_URL: ${APP_URL:-http://localhost:3210}
       # Generate one: node -e "console.log(require('crypto').randomBytes(32).toString('base64url'))"
@@ -46,7 +46,7 @@ services:
       SMTP_PORT: ${SMTP_PORT:-587}
       SMTP_USER: ${SMTP_USER:-}
       SMTP_PASSWORD: ${SMTP_PASSWORD:-}
-      SMTP_FROM: ${SMTP_FROM:-GoLink <no-reply@example.com>}
+      SMTP_FROM: ${SMTP_FROM:-Steadlink <no-reply@example.com>}
     ports:
       - "${APP_PORT:-3210}:3210"
     volumes:
@@ -55,14 +55,14 @@ services:
   worker:
     build: .
     restart: unless-stopped
-    command: ["pnpm", "--filter", "@golink/worker", "start"]
+    command: ["pnpm", "--filter", "@steadlink/worker", "start"]
     depends_on:
       postgres:
         condition: service_healthy
     environment:
-      DATABASE_MIGRATION_URL: postgres://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/golink
-      DATABASE_URL: postgres://golinkworker:golinkworker@postgres:5432/golink
-      DATABASE_WORKER_ROLE: golinkworker
+      DATABASE_MIGRATION_URL: postgres://postgres:${POSTGRES_PASSWORD:-postgres}@postgres:5432/steadlink
+      DATABASE_URL: postgres://steadlinkworker:steadlinkworker@postgres:5432/steadlink
+      DATABASE_WORKER_ROLE: steadlinkworker
       BETTER_AUTH_SECRET: ${BETTER_AUTH_SECRET:?set BETTER_AUTH_SECRET in .env}
       WORKER_CONCURRENCY: ${WORKER_CONCURRENCY:-4}
 

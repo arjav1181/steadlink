@@ -60,7 +60,7 @@ test.describe("the group switcher", () => {
     await dialog.getByLabel("Destination URL").fill("https://example.com/group-scoped");
     await dialog.getByLabel("Back-half").fill("f21-group-scoped");
     await dialog.getByLabel("Title").fill("Group scoped");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
 
     // It is in the group that was chosen, and not in the other one.
@@ -90,7 +90,7 @@ test.describe("the group switcher", () => {
 
     await page.context().addCookies([
       {
-        name: "golink.group",
+        name: "steadlink.group",
         value: foreign!,
         url: "http://127.0.0.1:3311",
       },

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Field, Modal, TextInput } from "@golink/ui";
+import { Button, Field, Modal, TextInput } from "@steadlink/ui";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 
@@ -17,7 +17,7 @@ export function CampaignDialog({
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const [name, setName] = React.useState("");
-  const [channelText, setChannelText] = React.useState(channels.join(", "));
+  const [channelText, setChannelText] = React.useState([...new Set(channels)].join(", "));
   const [error, setError] = React.useState<string | null>(null);
   const [busy, setBusy] = React.useState(false);
 

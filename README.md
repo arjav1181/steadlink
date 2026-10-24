@@ -1,11 +1,12 @@
-# GoLink
+# Steadlink
 
 A self-hosted short link service: links, branded domains, QR codes, landing
 pages, campaigns, webhooks, and a public REST API.
 
 Everything runs on your own machine. There is no account to create, no
 trial clock, and nothing that talks to a third party unless you point it
-at something.
+at something. The click goes straight to the destination: no page in
+between, no ad, no countdown. The link you printed still works.
 
 ## What it does
 
@@ -65,7 +66,7 @@ pnpm worker               # the scheduled jobs, in another terminal
 ```
 
 The seed creates three people, and they all have the password
-`golink-demo-password`:
+`steadlink-demo-password`:
 
 | address | workspace |
 | --- | --- |
@@ -82,7 +83,7 @@ pnpm test:e2e       # the flows, in a browser
 
 `pnpm test:e2e` needs a PostgreSQL to test against: one it can drop a
 database in and create the roles in. It uses its own database,
-`golink_test`, drops it, applies the migrations, seeds it, and starts the
+`steadlink_test`, drops it, applies the migrations, seeds it, and starts the
 application as the unprivileged role — the role it runs as in the
 container. The spec files live in `e2e/`, one per flow.
 
@@ -114,7 +115,7 @@ matter most:
 
 ## The access rules
 
-The application connects as a role that is a member of `golink_app`, and
+The application connects as a role that is a member of `steadlink_app`, and
 the policies on the tables that hold one workspace's private material read
 a transaction-local setting, `app.org_id`. A query that forgets to scope
 itself returns nothing rather than everything.

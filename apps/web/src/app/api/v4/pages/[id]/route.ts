@@ -5,7 +5,7 @@
  * appearance, and `DELETE` removes it.
  */
 
-import { deletePage, getPage, updatePage } from "@golink/data";
+import { deletePage, getPage, updatePage } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import { handle, json, optionalString } from "@/server/api-response";

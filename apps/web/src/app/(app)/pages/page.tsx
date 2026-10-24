@@ -1,5 +1,5 @@
-import { getCtx, listPages, listPageTemplates } from "@golink/data";
-import { Badge, Button, Card, EmptyState } from "@golink/ui";
+import { getCtx, listPages, listPageTemplates } from "@steadlink/data";
+import { Badge, Button, Card, EmptyState } from "@steadlink/ui";
 import { ArrowRight, FileText, Plus } from "lucide-react";
 import Link from "next/link";
 

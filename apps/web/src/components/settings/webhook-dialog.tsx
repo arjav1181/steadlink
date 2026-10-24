@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Field, Modal, Select, TextInput, Toggle } from "@golink/ui";
+import { Button, Field, Modal, Select, TextInput, Toggle } from "@steadlink/ui";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 
@@ -58,7 +58,7 @@ export function WebhookDialog({
         open={open}
         onOpenChange={setOpen}
         title="New webhook"
-        description="We sign every request with HMAC-SHA256. The signature travels in the X-GoLink-Signature header."
+        description="We sign every request with HMAC-SHA256. The signature travels in the X-Steadlink-Signature header."
         footer={
           <>
             <Button variant="ghost" onClick={() => setOpen(false)}>
@@ -95,7 +95,7 @@ export function WebhookDialog({
               type="url"
               value={url}
               onChange={(event) => setUrl(event.target.value)}
-              placeholder="https://hooks.example.com/golink"
+              placeholder="https://hooks.example.com/steadlink"
               required
             />
           </Field>

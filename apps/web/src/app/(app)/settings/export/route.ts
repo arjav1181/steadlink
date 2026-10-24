@@ -9,7 +9,7 @@
  * the callers that do have a token.
  */
 
-import { getCtx, listLinks } from "@golink/data";
+import { getCtx, listLinks } from "@steadlink/data";
 
 export const dynamic = "force-dynamic";
 
@@ -47,7 +47,7 @@ export async function GET() {
   return new Response(`${lines.join("\n")}\n`, {
     headers: {
       "Content-Type": "text/csv; charset=utf-8",
-      "Content-Disposition": `attachment; filename="golink-links.csv"`,
+      "Content-Disposition": `attachment; filename="steadlink-links.csv"`,
       "Cache-Control": "no-store",
     },
   });

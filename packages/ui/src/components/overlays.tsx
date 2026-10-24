@@ -35,12 +35,17 @@ export function Modal({
         <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-[rgba(16,24,40,.45)] data-[state=open]:animate-in" />
         <DialogPrimitive.Content
           className={cn(
-            "fixed top-1/2 left-1/2 z-50 w-[calc(100vw-2rem)] -translate-x-1/2 -translate-y-1/2",
+            // A tall dialog on a short screen has to stay reachable: the
+            // content scrolls inside it, and the header and the footer stay
+            // where they are. Without the cap the bottom of the dialog is
+            // off the screen and there is nothing to scroll, so the button
+            // that saves the form cannot be pressed at all.
+            "fixed top-1/2 left-1/2 z-50 flex max-h-[calc(100dvh-2rem)] w-[calc(100vw-2rem)] -translate-x-1/2 -translate-y-1/2 flex-col",
             "rounded-xl bg-surface shadow-pop focus:outline-none",
             widths[width],
           )}
         >
-          <div className="flex items-start justify-between gap-4 p-6 pb-0">
+          <div className="flex shrink-0 items-start justify-between gap-4 p-6 pb-0">
             <div className="min-w-0">
               <DialogPrimitive.Title className="text-lg font-semibold text-foreground">
                 {title}
@@ -58,9 +63,9 @@ export function Modal({
               <X aria-hidden="true" className="size-4" />
             </DialogPrimitive.Close>
           </div>
-          {children ? <div className="p-6">{children}</div> : null}
+          {children ? <div className="min-h-0 flex-1 overflow-y-auto p-6">{children}</div> : null}
           {footer ? (
-            <div className="flex items-center justify-end gap-2 border-t border-border px-6 py-4">
+            <div className="flex shrink-0 items-center justify-end gap-2 border-t border-border px-6 py-4">
               {footer}
             </div>
           ) : null}

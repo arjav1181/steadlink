@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Card, Field, TextInput } from "@golink/ui";
+import { Button, Card, Field, TextInput } from "@steadlink/ui";
 import { Globe, Plus, Trash2 } from "lucide-react";
 import * as React from "react";
 

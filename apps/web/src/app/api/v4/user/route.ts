@@ -6,7 +6,7 @@
  * which workspace it is acting on.
  */
 
-import { getProfile } from "@golink/data";
+import { getProfile } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import { handle, json } from "@/server/api-response";

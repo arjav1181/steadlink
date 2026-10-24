@@ -5,8 +5,8 @@ import {
   listCampaigns,
   listDomains,
   listLinks,
-} from "@golink/data";
-import { Badge, Button, Card, EmptyState } from "@golink/ui";
+} from "@steadlink/data";
+import { Badge, Button, Card, EmptyState } from "@steadlink/ui";
 import { ChevronLeft, ChevronRight, Filter, Plus } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -307,12 +307,14 @@ export default async function LinksPage({
           title={
             filtered
               ? "No links match those filters"
-              : `“${ctx.groupId ? "This group" : "Your workspace"}” has no links yet`
+              : ctx.groupId
+                ? "This group has no links yet"
+                : "Your workspace has no links yet"
           }
           body={
             filtered
               ? "Try a shorter term, or clear a filter to see more."
-              : "A group keeps one set of links apart from another. Make a link here and it stays in this group."
+              : "Each group keeps its own links. Make one here and it stays in this group."
           }
           action={
             filtered ? (
@@ -321,7 +323,7 @@ export default async function LinksPage({
               </Button>
             ) : (
               <Button asChild>
-                <Link href="/links?new=1">Create a link</Link>
+                <Link href="/links?new=1">Make a link</Link>
               </Button>
             )
           }

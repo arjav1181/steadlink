@@ -1,6 +1,6 @@
 "use client";
 
-import type { Group, Organization, User } from "@golink/data";
+import type { Group, Organization, User } from "@steadlink/data";
 import { createContext, useContext } from "react";
 
 const AccountContext = createContext<{

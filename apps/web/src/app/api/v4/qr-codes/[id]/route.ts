@@ -5,7 +5,7 @@
  * `DELETE` removes it.
  */
 
-import { deleteQrCode, getQrCode, updateQrCode } from "@golink/data";
+import { deleteQrCode, getQrCode, updateQrCode } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import { handle, json, optionalString, optionalStringArray } from "@/server/api-response";

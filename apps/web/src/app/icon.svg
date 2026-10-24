@@ -1,11 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#2f3a4a" />
-  <path
-    d="M11 20.5 20.5 11"
-    stroke="#ffffff"
-    stroke-width="2.4"
-    stroke-linecap="round"
-  />
-  <circle cx="11.5" cy="11.5" r="3" fill="none" stroke="#ffffff" stroke-width="2.4" />
-  <circle cx="20.5" cy="20.5" r="3" fill="none" stroke="#ffffff" stroke-width="2.4" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Steadlink">
+  <!--
+    Steadlink mark: a link that stands.
+
+    One loop resting on a flat base. The loop is the link; the base is the
+    ground it holds still on. No chain, no arrow, no globe - those are the
+    category's clichés and the original's mark is not to be echoed.
+
+    Draw it as one shape: the loop's outer edge meets the top of the base,
+    so the two read as a single figure at 16px and at 1024px.
+
+    The ground colour is the brand teal, --color-accent. The mark is white
+    on it, so it also works reversed on a dark surface.
+  -->
+  <rect width="32" height="32" rx="7" fill="#0c5b4a" />
+  <g fill="none" stroke="#ffffff" stroke-width="3.2">
+    <circle cx="16" cy="12.6" r="6" />
+  </g>
+  <rect x="6" y="20.6" width="20" height="3.4" rx="1.7" fill="#ffffff" />
 </svg>

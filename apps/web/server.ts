@@ -12,7 +12,7 @@
  */
 
 import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
-import { RESERVED_CODES } from "@golink/data";
+import { RESERVED_CODES } from "@steadlink/data";
 import next from "next";
 
 import { factsFromHeaders, logEngagement, resolve } from "./src/server/redirect.ts";
@@ -33,7 +33,7 @@ const server = createServer(async (req, res) => {
     // Without this the request never gets an answer and the client waits
     // until it gives up. A short link that cannot be resolved must fail,
     // not hang.
-    console.error(`[golink] ${req.method} ${req.url} failed`, error);
+    console.error(`[steadlink] ${req.method} ${req.url} failed`, error);
     if (!res.headersSent) {
       res.writeHead(500, { "Content-Type": "text/plain; charset=utf-8" });
     }
@@ -74,5 +74,5 @@ async function handle(req: IncomingMessage, res: ServerResponse) {
 }
 
 server.listen(port, hostname, () => {
-  console.log(`GoLink ready on http://${hostname}:${port} (${dev ? "dev" : "production"})`);
+  console.log(`Steadlink ready on http://${hostname}:${port} (${dev ? "dev" : "production"})`);
 });

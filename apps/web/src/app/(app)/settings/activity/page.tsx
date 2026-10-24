@@ -1,6 +1,6 @@
-import { getCtx, listActivity } from "@golink/data";
+import { getCtx, listActivity } from "@steadlink/data";
 
-import { Card } from "@golink/ui";
+import { Card } from "@steadlink/ui";
 
 import { formatDateTime } from "@/lib/format";
 

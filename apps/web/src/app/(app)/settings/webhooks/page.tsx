@@ -1,5 +1,5 @@
-import { getCtx, listWebhookDeliveries, listWebhooks } from "@golink/data";
-import { Badge, Button, Card } from "@golink/ui";
+import { getCtx, listWebhookDeliveries, listWebhooks } from "@steadlink/data";
+import { Badge, Button, Card } from "@steadlink/ui";
 import { Plus } from "lucide-react";
 
 import { WebhookDialog } from "@/components/settings/webhook-dialog";
@@ -18,7 +18,7 @@ export default async function WebhooksPage() {
         <div>
           <h1 className="text-2xl font-bold text-foreground">Webhooks</h1>
           <p className="mt-1 text-sm text-muted">
-            GoLink posts to your URL when something happens. Every request is signed.
+            Steadlink posts to your URL when something happens. Every request is signed.
           </p>
         </div>
         <WebhookDialog

@@ -5,8 +5,8 @@ import {
   getWeeklyInsights,
   type Range,
   rangeFromDays,
-} from "@golink/data";
-import { Badge, Button, Card, StatCard } from "@golink/ui";
+} from "@steadlink/data";
+import { Badge, Button, Card, StatCard } from "@steadlink/ui";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 

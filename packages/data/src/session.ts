@@ -37,16 +37,16 @@ export interface SessionIdentity {
 type SessionReader = () => Promise<SessionIdentity | null>;
 
 const globalForSession = globalThis as unknown as {
-  golinkSessionReader?: SessionReader;
+  steadlinkSessionReader?: SessionReader;
 };
 
 /** Tell the data layer who the caller is. */
 export function setSessionReader(fn: SessionReader) {
-  globalForSession.golinkSessionReader = fn;
+  globalForSession.steadlinkSessionReader = fn;
 }
 
 /** The caller, or null when there is nobody. */
 export function readSession(): Promise<SessionIdentity | null> {
-  const reader = globalForSession.golinkSessionReader;
+  const reader = globalForSession.steadlinkSessionReader;
   return reader ? reader() : Promise.resolve(null);
 }

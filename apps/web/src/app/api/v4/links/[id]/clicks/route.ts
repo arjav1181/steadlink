@@ -6,7 +6,7 @@
  * seven days, which is what a dashboard shows.
  */
 
-import { getLink, getLinkMetrics, rangeFromDays } from "@golink/data";
+import { getLink, getLinkMetrics, rangeFromDays } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import { handle, json, queryNumber, queryParam } from "@/server/api-response";

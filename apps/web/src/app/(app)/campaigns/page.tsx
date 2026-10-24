@@ -1,5 +1,5 @@
-import { getCtx, listCampaigns, listChannels } from "@golink/data";
-import { Badge, Button, Card, EmptyState } from "@golink/ui";
+import { getCtx, listCampaigns, listChannels } from "@steadlink/data";
+import { Badge, Button, Card, EmptyState } from "@steadlink/ui";
 import { Plus } from "lucide-react";
 
 import { CampaignDialog } from "@/components/campaigns/campaign-dialog";
@@ -10,6 +10,10 @@ export const dynamic = "force-dynamic";
 export default async function CampaignsPage() {
   const ctx = await getCtx();
   const [campaigns, channels] = await Promise.all([listCampaigns(ctx), listChannels(ctx)]);
+  // One name per channel, not one per campaign that uses it: the dialog
+  // starts with these in its field, and a name repeated there is a name
+  // the person has to delete before the form will work.
+  const channelNames = [...new Set(channels.map((channel) => channel.name))];
 
   return (
     <div className="space-y-6">
@@ -21,7 +25,7 @@ export default async function CampaignsPage() {
           </p>
         </div>
         <CampaignDialog
-          channels={channels.map((channel) => channel.name)}
+          channels={channelNames}
           trigger={
             <Button>
               <Plus aria-hidden="true" className="size-4" />
@@ -37,10 +41,7 @@ export default async function CampaignsPage() {
           title="No campaigns yet"
           body="A campaign holds a set of links and the channels you share them on, so you can see which push actually worked."
           action={
-            <CampaignDialog
-              channels={channels.map((channel) => channel.name)}
-              trigger={<Button>Create a campaign</Button>}
-            />
+            <CampaignDialog channels={channelNames} trigger={<Button>Create a campaign</Button>} />
           }
         />
       ) : (

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, buildMatrix, Modal, type QrDesign, QrPreview, renderQrSvg } from "@golink/ui";
+import { Button, buildMatrix, Modal, type QrDesign, QrPreview, renderQrSvg } from "@steadlink/ui";
 import { Download } from "lucide-react";
 import * as React from "react";
 

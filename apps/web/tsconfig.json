@@ -21,8 +21,8 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@golink/ui": ["../../packages/ui/src/index.ts"],
-      "@golink/data": ["../../packages/data/src/index.ts"]
+      "@steadlink/ui": ["../../packages/ui/src/index.ts"],
+      "@steadlink/data": ["../../packages/data/src/index.ts"]
     },
     "allowJs": true,
     "allowImportingTsExtensions": true

@@ -36,7 +36,7 @@ const [width, height] = (process.env.CLONE_VIEWPORT ?? "1440x900").split("x").ma
 const DATABASE_URL =
   process.env.CLONE_DATABASE_URL ??
   process.env.E2E_DATABASE_URL ??
-  "postgres://golink:golink@127.0.0.1:55440/golink_test";
+  "postgres://steadlink:steadlink@127.0.0.1:55440/steadlink_test";
 const EXECUTABLE =
   process.env.CHROMIUM_PATH ??
   "/repl/tools/6bb0zvhm12wkbn4g2nix32cbran1mgb3-chromium/bin/chromium";

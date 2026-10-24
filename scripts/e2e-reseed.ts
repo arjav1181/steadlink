@@ -29,9 +29,9 @@ const root = path.join(here, "..");
 
 const ADMIN_URL =
   process.env.E2E_ADMIN_URL ?? "postgres://postgres:postgres@127.0.0.1:55440/postgres";
-const DATABASE_NAME = process.env.E2E_DATABASE_NAME ?? "golink_test";
+const DATABASE_NAME = process.env.E2E_DATABASE_NAME ?? "steadlink_test";
 const APP_URL =
-  process.env.E2E_DATABASE_URL ?? `postgres://golink:golink@127.0.0.1:55440/${DATABASE_NAME}`;
+  process.env.E2E_DATABASE_URL ?? `postgres://steadlink:steadlink@127.0.0.1:55440/${DATABASE_NAME}`;
 const MIGRATION_URL = ADMIN_URL.replace(/\/postgres$/, `/${DATABASE_NAME}`);
 
 function run(command: string, args: string[], env: NodeJS.ProcessEnv): Promise<void> {

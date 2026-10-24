@@ -1,5 +1,5 @@
-import { getCtx, listQrTemplates } from "@golink/data";
-import { Card, QrTemplateCard } from "@golink/ui";
+import { getCtx, listQrTemplates } from "@steadlink/data";
+import { Card, QrTemplateCard } from "@steadlink/ui";
 
 export const dynamic = "force-dynamic";
 

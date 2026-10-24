@@ -1,5 +1,5 @@
-import { getCtx, listCampaigns, listChannels } from "@golink/data";
-import { Badge, Card, EmptyState } from "@golink/ui";
+import { getCtx, listCampaigns, listChannels } from "@steadlink/data";
+import { Badge, Card, EmptyState } from "@steadlink/ui";
 import { Globe } from "lucide-react";
 import Link from "next/link";
 

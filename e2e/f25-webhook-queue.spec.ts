@@ -68,7 +68,7 @@ test.describe("the webhook queue", () => {
     await create.getByLabel("Destination URL").fill("https://example.com/queued-link");
     await create.getByLabel("Back-half").fill("f25-queued-link");
     await create.getByLabel("Title").fill("Queued link");
-    await create.getByRole("button", { name: "Create link" }).click();
+    await create.getByRole("button", { name: "Make the link" }).click();
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
 
     await expect

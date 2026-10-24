@@ -1,6 +1,6 @@
 "use client";
 
-import type { SeriesPoint } from "@golink/data";
+import type { SeriesPoint } from "@steadlink/data";
 import {
   Area,
   AreaChart,

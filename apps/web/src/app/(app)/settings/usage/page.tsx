@@ -1,6 +1,6 @@
-import { getCtx, getUsage } from "@golink/data";
+import { getCtx, getUsage } from "@steadlink/data";
 
-import { Card, UsageBar } from "@golink/ui";
+import { Card, UsageBar } from "@steadlink/ui";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +13,7 @@ export default async function UsagePage() {
       <div>
         <h1 className="text-2xl font-bold text-foreground">Billing and usage</h1>
         <p className="mt-1 text-sm text-muted">
-          GoLink is free and self-hosted. These limits are the ones your operator set, not a
+          Steadlink is free and self-hosted. These limits are the ones your operator set, not a
           subscription.
         </p>
       </div>

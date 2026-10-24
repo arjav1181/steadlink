@@ -1,6 +1,6 @@
 "use server";
 
-import { addDomain, DataError, getCtx, removeDomain, verifyDomain } from "@golink/data";
+import { addDomain, DataError, getCtx, removeDomain, verifyDomain } from "@steadlink/data";
 import { revalidatePath } from "next/cache";
 
 export interface DomainActionResult {

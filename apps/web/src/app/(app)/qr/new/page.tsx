@@ -1,4 +1,4 @@
-import { getCtx, listQrTemplates } from "@golink/data";
+import { getCtx, listQrTemplates } from "@steadlink/data";
 
 import { QrDesigner } from "@/components/qr/qr-designer";
 

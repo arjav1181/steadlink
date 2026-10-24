@@ -1,13 +1,13 @@
-import { getProfile } from "@golink/data";
+import { getProfile } from "@steadlink/data";
 
-import { Card } from "@golink/ui";
+import { Card } from "@steadlink/ui";
 
 import { ProfileForm } from "@/components/settings/profile-form";
 
 export const dynamic = "force-dynamic";
 
 export default async function SettingsPage() {
-  const ctx = await import("@golink/data").then((module) => module.getCtx());
+  const ctx = await import("@steadlink/data").then((module) => module.getCtx());
   const profile = await getProfile(ctx);
 
   return (

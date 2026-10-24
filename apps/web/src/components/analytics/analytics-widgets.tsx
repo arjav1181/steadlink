@@ -1,6 +1,6 @@
 "use client";
 
-import { Card } from "@golink/ui";
+import { Card } from "@steadlink/ui";
 import * as React from "react";
 
 import { CategoryBars, Donut, TimeSeries } from "@/components/charts";

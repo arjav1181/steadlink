@@ -4,7 +4,7 @@ import { defineConfig, devices } from "@playwright/test";
  * The end-to-end suite.
  *
  * The application is started by Playwright, against its own database, as the
- * unprivileged `golink` role. The database is reset from the migrations and
+ * unprivileged `steadlink` role. The database is reset from the migrations and
  * the seed before the application starts, so every run sees the same rows.
  *
  * The specs share one database and most of them change it, so they run one

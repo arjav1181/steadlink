@@ -31,7 +31,7 @@ test.describe("F12 custom domains", () => {
 
     await expect(page.getByText("CNAME").first()).toBeVisible();
     await expect(page.getByText("TXT").first()).toBeVisible();
-    await expect(page.getByText(/golink-verify=/).first()).toBeVisible();
+    await expect(page.getByText(/steadlink-verify=/).first()).toBeVisible();
     expectNoErrors(errors);
   });
 

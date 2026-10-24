@@ -5,7 +5,7 @@
  * one or more channels — the places those links go out to.
  */
 
-import { createCampaign, listCampaigns } from "@golink/data";
+import { createCampaign, listCampaigns } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import { handle, json, optionalStringArray, requireString } from "@/server/api-response";

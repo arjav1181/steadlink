@@ -20,7 +20,7 @@ test.describe("F16 expiration", () => {
     // A week from now, which is inside the year the app allows.
     const when = new Date(Date.now() + 7 * 86_400_000);
     await dialog.getByLabel("Expires").fill(when.toISOString().slice(0, 16));
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
 
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
     const response = await page.request.get("/f16-expiring", { maxRedirects: 0 });
@@ -37,7 +37,7 @@ test.describe("F16 expiration", () => {
     await dialog.getByLabel("Back-half").fill("f16-past");
     await dialog.getByRole("button", { name: "More options" }).click();
     await dialog.getByLabel("Expires").fill("2020-01-01T10:00");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
 
     await expect(dialog.getByRole("alert")).toBeVisible();
     expectNoErrors(errors);

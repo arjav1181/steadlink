@@ -5,7 +5,7 @@
  * keep their history and lose the campaign.
  */
 
-import { deleteCampaign, updateCampaign } from "@golink/data";
+import { deleteCampaign, updateCampaign } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import { handle, json, requireString } from "@/server/api-response";

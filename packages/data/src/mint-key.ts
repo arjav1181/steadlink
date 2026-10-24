@@ -5,8 +5,8 @@
  * app and it is not seeded — a token is something a person creates.
  */
 
-import { createApiKey } from "@golink/data";
-import { sql } from "@golink/db";
+import { createApiKey } from "@steadlink/data";
+import { sql } from "@steadlink/db";
 
 const rows = await sql()`
   select user_id, organization_id from member order by created_at limit 1

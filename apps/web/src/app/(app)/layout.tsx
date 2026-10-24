@@ -1,4 +1,4 @@
-import { getGroups, getSession } from "@golink/data";
+import { getGroups, getSession } from "@steadlink/data";
 import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 

@@ -1,5 +1,5 @@
-import { getCtx, getQrCode, getQrMetrics, listLinks, rangeFromDays } from "@golink/data";
-import { Badge, Card, CopyButton, QrPreview, StatCard } from "@golink/ui";
+import { getCtx, getQrCode, getQrMetrics, listLinks, rangeFromDays } from "@steadlink/data";
+import { Badge, Card, CopyButton, QrPreview, StatCard } from "@steadlink/ui";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";

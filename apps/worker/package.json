@@ -1,5 +1,5 @@
 {
-  "name": "@golink/worker",
+  "name": "@steadlink/worker",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -8,7 +8,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@golink/db": "workspace:*",
+    "@steadlink/db": "workspace:*",
     "pg-boss": "12.38.0"
   },
   "devDependencies": {

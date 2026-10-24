@@ -418,8 +418,8 @@ async function main() {
       verificationStatus: workspace.customDomain.verified ? "verified" : "pending",
       verifiedAt: workspace.customDomain.verified ? daysAgo(40) : null,
       dnsRecords: [
-        { type: "CNAME", name: "go", value: "proxy.golink.dev" },
-        { type: "TXT", name: "_golink", value: `golink-verify=${id().slice(0, 8)}` },
+        { type: "CNAME", name: "go", value: "proxy.steadlink.dev" },
+        { type: "TXT", name: "_steadlink", value: `steadlink-verify=${id().slice(0, 8)}` },
       ],
       createdAt: daysAgo(60),
     });
@@ -454,7 +454,7 @@ async function main() {
       id: id(),
       orgId,
       name: "Spring launch",
-      params: { utm_source: "social", utm_medium: "golink", utm_campaign: "spring-launch" },
+      params: { utm_source: "social", utm_medium: "steadlink", utm_campaign: "spring-launch" },
     });
 
     /* links */
@@ -918,14 +918,14 @@ async function main() {
       {
         name: "Engagement stream",
         event: "engagement",
-        url: "https://hooks.example.com/golink/engagement",
+        url: "https://hooks.example.com/steadlink/engagement",
         active: true,
         tags: true,
       },
       {
         name: "New links",
         event: "link.created",
-        url: "https://hooks.example.com/golink/links",
+        url: "https://hooks.example.com/steadlink/links",
         active: false,
         tags: false,
       },
@@ -1038,7 +1038,7 @@ async function main() {
     await database.insert(mailOutbox).values({
       id: id(),
       to: workspace.users[0]!.email,
-      subject: "Your GoLink workspace is ready",
+      subject: "Your Steadlink workspace is ready",
       html: "<p>Your workspace has been created. Open it to start shortening links.</p>",
       kind: "workspace_created",
       status: "sent",

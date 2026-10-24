@@ -11,8 +11,8 @@
  * real, and pretending otherwise would hide a configuration mistake.
  */
 
-import { getAuth } from "@golink/auth";
-import { getApiKeyContext, type Scope, scopeFor } from "@golink/data";
+import { getAuth } from "@steadlink/auth";
+import { getApiKeyContext, type Scope, scopeFor } from "@steadlink/data";
 
 import "@/server/session";
 

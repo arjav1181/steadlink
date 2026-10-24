@@ -5,7 +5,7 @@
  * link's uuid, so a caller never has to know which host it was made on.
  */
 
-import { deleteLink, getLink, setLinkState, updateLink } from "@golink/data";
+import { deleteLink, getLink, setLinkState, updateLink } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import { handle, json, optionalString, optionalStringArray } from "@/server/api-response";

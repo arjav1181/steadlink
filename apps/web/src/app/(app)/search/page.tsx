@@ -1,5 +1,5 @@
-import { getCtx, search } from "@golink/data";
-import { Badge, Card, EmptyState, Tag as TagChip } from "@golink/ui";
+import { getCtx, search } from "@steadlink/data";
+import { Badge, Card, EmptyState, Tag as TagChip } from "@steadlink/ui";
 import { Link2, QrCode } from "lucide-react";
 import Link from "next/link";
 

@@ -5,8 +5,8 @@ import {
   getWeeklyInsights,
   listDomains,
   rangeFromDays,
-} from "@golink/data";
-import { Badge, Button, Card, Chip } from "@golink/ui";
+} from "@steadlink/data";
+import { Badge, Button, Card, Chip } from "@steadlink/ui";
 import { ArrowRight, Link2, Plus, QrCode, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { EngagementChart } from "@/components/engagement-chart";

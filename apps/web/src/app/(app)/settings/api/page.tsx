@@ -1,5 +1,5 @@
-import { getCtx, listApiKeys } from "@golink/data";
-import { Badge, Button, Card } from "@golink/ui";
+import { getCtx, listApiKeys } from "@steadlink/data";
+import { Badge, Button, Card } from "@steadlink/ui";
 import { Plus } from "lucide-react";
 
 import { ApiKeyDialog } from "@/components/settings/api-key-dialog";

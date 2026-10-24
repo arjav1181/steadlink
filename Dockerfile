@@ -27,7 +27,7 @@ COPY apps/worker/package.json apps/worker/
 RUN pnpm install --frozen-lockfile
 
 COPY . .
-RUN pnpm --filter @golink/web build
+RUN pnpm --filter @steadlink/web build
 
 # --- run -----------------------------------------------------------------
 FROM node:24-bookworm-slim AS run
@@ -50,8 +50,8 @@ COPY --from=build /app/packages/db/migrations ./packages/db/migrations
 # The migrations run as the superuser; the application connects as the
 # unprivileged role the row level security policies apply to. So the image
 # carries both URLs, and only the second one is the application's.
-ENV DATABASE_MIGRATION_URL=postgres://postgres:postgres@postgres:5432/golink
-ENV DATABASE_URL=postgres://golink:golink@postgres:5432/golink
+ENV DATABASE_MIGRATION_URL=postgres://postgres:postgres@postgres:5432/steadlink
+ENV DATABASE_URL=postgres://steadlink:steadlink@postgres:5432/steadlink
 
 # The data directory the geo database is mounted into.
 VOLUME ["/data/geoip"]
@@ -59,4 +59,4 @@ VOLUME ["/data/geoip"]
 EXPOSE 3210
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
-CMD ["pnpm", "--filter", "@golink/web", "start"]
+CMD ["pnpm", "--filter", "@steadlink/web", "start"]

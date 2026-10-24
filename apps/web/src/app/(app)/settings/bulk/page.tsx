@@ -1,5 +1,5 @@
-import { getCtx, listBulkUploads } from "@golink/data";
-import { Badge, Button, Card } from "@golink/ui";
+import { getCtx, listBulkUploads } from "@steadlink/data";
+import { Badge, Button, Card } from "@steadlink/ui";
 import { Upload } from "lucide-react";
 
 import { BulkUploadForm } from "@/components/settings/bulk-upload-form";

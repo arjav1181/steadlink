@@ -67,6 +67,28 @@ test.describe("F09 campaigns and channels", () => {
     expectNoErrors(errors);
   });
 
+  test("F09-N2 the same channel twice is one channel", async ({ page, errors }) => {
+    await signIn(page);
+    await page.goto("/campaigns");
+
+    await page.getByRole("button", { name: "New campaign" }).first().click();
+    const dialog = page.getByRole("dialog");
+    await dialog.getByLabel("Name").fill("E2E repeat");
+    await dialog.getByLabel("Channels").fill("social, social, email");
+    await dialog.getByRole("button", { name: /create/i }).click();
+
+    // Two channels, not three. A repeat is the same channel written twice,
+    // and the database refuses two rows with one name on one campaign, so
+    // the repeat has to be folded before the insert rather than after it.
+    const heading = page.getByRole("heading", { name: "E2E repeat" });
+    await expect(heading).toBeVisible();
+    const card = heading.locator("xpath=ancestor::*[self::div][2]");
+    await expect(card.getByRole("listitem")).toHaveCount(2);
+    await expect(card.getByRole("listitem").filter({ hasText: "social" })).toHaveCount(1);
+    await expect(card.getByRole("listitem").filter({ hasText: "email" })).toHaveCount(1);
+    expectNoErrors(errors);
+  });
+
   test("F09-H2 the seeded campaigns are listed with their channels", async ({ page, errors }) => {
     await signIn(page);
     await page.goto("/campaigns");
@@ -85,9 +107,14 @@ test.describe("F09 campaigns and channels", () => {
     await page.getByRole("button", { name: "New campaign" }).first().click();
     const dialog = page.getByRole("dialog");
     await dialog.getByLabel("Name").fill("E2E no channels");
+    // The field starts with the workspace's channels already in it, so the
+    // case has to empty it. Before, the field was left alone and the case
+    // passed on a database error about a duplicate channel, which is not
+    // the refusal it was written to prove.
+    await dialog.getByLabel("Channels").fill("");
     await dialog.getByRole("button", { name: /create/i }).click();
 
-    await expect(dialog.getByRole("alert")).toBeVisible();
+    await expect(dialog.getByRole("alert")).toHaveText("A campaign needs at least one channel.");
     expectNoErrors(errors);
   });
 
@@ -100,7 +127,9 @@ test.describe("F09 campaigns and channels", () => {
     await dialog.getByLabel("Name").fill("");
     await dialog.getByRole("button", { name: /create/i }).click();
 
-    await expect(dialog.getByRole("alert")).toBeVisible();
+    // The create button is in the footer, outside the form, so the name
+    // field's `required` never runs and an empty name used to be saved.
+    await expect(dialog.getByRole("alert")).toHaveText("A campaign needs a name.");
     expectNoErrors(errors);
   });
 

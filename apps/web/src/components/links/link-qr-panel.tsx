@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Card, type QrDesign, QrPreview } from "@golink/ui";
+import { Button, Card, type QrDesign, QrPreview } from "@steadlink/ui";
 import { QrCode } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

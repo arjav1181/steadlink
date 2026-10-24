@@ -1,6 +1,6 @@
-import { getAiSettings, getCtx } from "@golink/data";
+import { getAiSettings, getCtx } from "@steadlink/data";
 
-import { Card } from "@golink/ui";
+import { Card } from "@steadlink/ui";
 
 import { AiSettingsForm } from "@/components/settings/ai-settings-form";
 

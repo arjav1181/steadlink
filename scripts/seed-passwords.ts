@@ -18,7 +18,7 @@ import { hashPassword } from "better-auth/crypto";
 import postgres from "postgres";
 
 /** The password every seeded person has. */
-export const DEMO_PASSWORD = "golink-demo-password";
+export const DEMO_PASSWORD = "steadlink-demo-password";
 
 const ACCOUNTS = [
   { email: "arjav@example.com", workspace: "Acme Studio" },

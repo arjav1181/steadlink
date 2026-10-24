@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, IconButton } from "@golink/ui";
+import { Button, IconButton } from "@steadlink/ui";
 import {
   BarChart3,
   ChevronLeft,
@@ -63,32 +63,26 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     >
       <Link
         href="/dashboard"
-        aria-label="GoLink home"
+        aria-label="Steadlink home"
         className="mb-2 flex size-10 items-center justify-center rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         <svg viewBox="0 0 32 32" className="size-8" aria-hidden="true">
           <rect width="32" height="32" rx="7" fill="var(--color-accent)" />
-          <path
-            d="M11 20.5 20.5 11"
-            stroke="var(--color-accent-foreground)"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-          />
           <circle
-            cx="11.5"
-            cy="11.5"
-            r="3"
+            cx="16"
+            cy="12.6"
+            r="6"
             fill="none"
             stroke="var(--color-accent-foreground)"
-            strokeWidth="2.4"
+            strokeWidth="3.2"
           />
-          <circle
-            cx="20.5"
-            cy="20.5"
-            r="3"
-            fill="none"
-            stroke="var(--color-accent-foreground)"
-            strokeWidth="2.4"
+          <rect
+            x="6"
+            y="20.6"
+            width="20"
+            height="3.4"
+            rx="1.7"
+            fill="var(--color-accent-foreground)"
           />
         </svg>
       </Link>
@@ -222,9 +216,15 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 icon={<Sparkles aria-hidden="true" className="size-4" />}
                 onClick={() => router.push("/analytics?assistant=1")}
               />
-              <div className="ml-2 hidden items-center gap-3 md:flex">
+              {/* The group switcher is here at every width: a group scopes
+                  every list, so hiding it on a phone would leave the phone
+                  stuck in whichever group it opened in. The workspace name
+                  is the part that goes, because the picker is the control. */}
+              <div className="ml-2 flex min-w-0 items-center gap-3">
                 <GroupSwitcher groups={groups} active={group} />
-                <span className="text-sm font-medium text-foreground">{org?.name ?? ""}</span>
+                <span className="hidden truncate text-sm font-medium text-foreground sm:inline">
+                  {org?.name ?? ""}
+                </span>
               </div>
             </div>
           </header>
@@ -262,7 +262,7 @@ export function AssistantPanel({
   suggestions: string[];
 }) {
   const [messages, setMessages] = React.useState<
-    { id: string; role: "you" | "golink"; text: string }[]
+    { id: string; role: "you" | "steadlink"; text: string }[]
   >([]);
   const [draft, setDraft] = React.useState("");
 
@@ -273,8 +273,8 @@ export function AssistantPanel({
       ...current,
       { id: `m${current.length}-you`, role: "you", text: trimmed },
       {
-        id: `m${current.length}-golink`,
-        role: "golink",
+        id: `m${current.length}-steadlink`,
+        role: "steadlink",
         text: "The assistant is not wired to a model yet. Connect one in Settings, or browse the dashboard for the same numbers.",
       },
     ]);

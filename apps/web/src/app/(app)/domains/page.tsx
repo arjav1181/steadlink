@@ -1,5 +1,5 @@
-import { getCtx, listDomains } from "@golink/data";
-import { Badge, Button, Card, EmptyState } from "@golink/ui";
+import { getCtx, listDomains } from "@steadlink/data";
+import { Badge, Button, Card, EmptyState } from "@steadlink/ui";
 import { Globe, Plus } from "lucide-react";
 
 import { AddDomainDialog } from "@/components/domains/add-domain-dialog";
@@ -24,7 +24,7 @@ export default async function DomainsPage() {
         <div>
           <h1 className="text-2xl font-bold text-foreground">Custom domains</h1>
           <p className="mt-1 text-sm text-muted">
-            Point a domain you own at GoLink and every short link on it carries your name.
+            Point a domain you own at Steadlink and every short link on it carries your name.
           </p>
         </div>
         <AddDomainDialog

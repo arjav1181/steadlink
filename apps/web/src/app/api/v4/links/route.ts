@@ -6,7 +6,7 @@
  * that cannot do this is told what it cannot do.
  */
 
-import { createLink, getLink, type LinkFilters, listLinks } from "@golink/data";
+import { createLink, getLink, type LinkFilters, listLinks } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import {

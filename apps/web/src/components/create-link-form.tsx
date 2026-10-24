@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Field, Modal, Select, TextInput, Toggle } from "@golink/ui";
+import { Button, Field, Modal, Select, TextInput, Toggle } from "@steadlink/ui";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 
@@ -173,7 +173,7 @@ export function CreateLinkForm({
 
       <div className="flex items-center gap-2">
         <Button type="submit" loading={busy}>
-          Create link
+          Make the link
         </Button>
         {!compact ? (
           <Button type="button" variant="ghost" onClick={() => setAdvanced((open) => !open)}>

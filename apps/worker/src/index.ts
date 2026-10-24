@@ -12,7 +12,7 @@
  * click at 23:30 in Sydney.
  */
 
-import { sql } from "@golink/db";
+import { sql } from "@steadlink/db";
 import { PgBoss } from "pg-boss";
 
 const boss = new PgBoss({
@@ -20,10 +20,10 @@ const boss = new PgBoss({
   // Postgres reserves the "pg_" prefix for its own schemas, so a schema
   // called pg_boss cannot be created at all. This one also cannot collide
   // with another application's job queue in a shared database.
-  schema: "golink_boss",
+  schema: "steadlink_boss",
   // The worker crosses organizations on purpose - the rollups and the sweeps
   // are not scoped to one workspace - so it connects with BYPASSRLS.
-  application_name: "golink-worker",
+  application_name: "steadlink-worker",
 });
 
 const _DAY = 86_400_000;
@@ -31,7 +31,7 @@ const _DAY = 86_400_000;
 async function main() {
   await boss.start();
 
-  console.log("golink worker starting");
+  console.log("steadlink worker starting");
 
   /* ---------------------------------------------------------------------
    * Rollups.
@@ -172,10 +172,10 @@ async function main() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-GoLink-Event-Id": delivery.id,
-            "X-GoLink-Event-Type": delivery.event_type,
-            "X-GoLink-Timestamp": String(timestamp),
-            "X-GoLink-Signature": `t=${timestamp},v1=${signature}`,
+            "X-Steadlink-Event-Id": delivery.id,
+            "X-Steadlink-Event-Type": delivery.event_type,
+            "X-Steadlink-Timestamp": String(timestamp),
+            "X-Steadlink-Signature": `t=${timestamp},v1=${signature}`,
           },
           body,
           signal: AbortSignal.timeout(10_000),
@@ -258,7 +258,7 @@ async function main() {
   });
   await boss.schedule("accounts.purge", "0 5 * * *");
 
-  console.log("golink worker ready");
+  console.log("steadlink worker ready");
 }
 
 /** HMAC-SHA256, as a hex digest. */

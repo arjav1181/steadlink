@@ -1,6 +1,6 @@
 "use client";
 
-import type { QrDesign } from "@golink/ui";
+import type { QrDesign } from "@steadlink/ui";
 import {
   Button,
   ColorPicker,
@@ -13,7 +13,7 @@ import {
   QrPreview,
   readImageAsDataUrl,
   TextInput,
-} from "@golink/ui";
+} from "@steadlink/ui";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 import { updateQrCodeAction } from "@/app/actions";

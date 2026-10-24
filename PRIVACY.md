@@ -1,10 +1,10 @@
 # Privacy policy
 
-**GoLink** is a self-hosted link shortener. The person who runs the instance
+**Steadlink** is a self-hosted link shortener. The person who runs the instance
 is the one who operates it, and this document is the one they publish.
 
 > **This is a template.** Every section marked with a `‹...›` is a decision
-> the operator makes, not a fact GoLink can decide for them. GoLink knows
+> the operator makes, not a fact Steadlink can decide for them. Steadlink knows
 > which processors *can* be in use, because it reads them from the
 > environment. The operator says which ones *are* in use, and publishes the
 > result. Publish a filled-in copy at the URL your users are told about,
@@ -18,7 +18,7 @@ is the one who operates it, and this document is the one they publish.
 - ‹Contact address for privacy questions›
 - ‹The address the instance is served from›
 
-GoLink itself is open source software. It is published under a licence that
+Steadlink itself is open source software. It is published under a licence that
 includes the source. The operator is the one who decides what to do with the
 data, so the operator is the one who answers questions about it.
 
@@ -88,7 +88,7 @@ third party at all: say so here, and do not list a model provider.›
   and the answer come back are written to the database.
 - **The redirect itself.** A browser that follows a short link goes
   straight to the destination. The destination sees the browser, not
-  GoLink, except for the `Referer` header the browser sends.
+  Steadlink, except for the `Referer` header the browser sends.
 
 ## Your rights
 
@@ -119,7 +119,7 @@ answer: for example, thirty days.›
 
 ## Children
 
-GoLink is not aimed at children, and an instance operator should not
+Steadlink is not aimed at children, and an instance operator should not
 collect information from them. ‹If your instance is used by schools or
 similar, write the rule you follow here.›
 
@@ -132,7 +132,7 @@ of the last change, and where the new version is published.›
 
 ## The check the operator should run before publishing
 
-GoLink reads its own configuration. Before publishing this document, look
+Steadlink reads its own configuration. Before publishing this document, look
 at the environment and confirm that every processor listed above is one
 that is actually switched on, and that nothing that is switched on is
 missing from the list:

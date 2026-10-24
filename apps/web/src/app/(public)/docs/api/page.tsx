@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "The API — GoLink" };
+export const metadata = { title: "The API — Steadlink" };
 export const dynamic = "force-dynamic";
 
 const ENDPOINTS: {
@@ -119,7 +119,7 @@ curl -X POST -H "Authorization: Bearer gl_..." \\
 export default function ApiDocsPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
-      <p className="text-sm font-semibold text-muted">GoLink</p>
+      <p className="text-sm font-semibold text-muted">Steadlink</p>
       <h1 className="mt-2 text-3xl font-bold tracking-tight text-foreground">The API</h1>
       <p className="mt-3 text-muted">
         Everything the dashboard does, over HTTP. A token goes in the{" "}

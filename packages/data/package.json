@@ -1,5 +1,5 @@
 {
-  "name": "@golink/data",
+  "name": "@steadlink/data",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -16,7 +16,7 @@
     "typescript": "7.0.2"
   },
   "dependencies": {
-    "@golink/db": "workspace:*",
+    "@steadlink/db": "workspace:*",
     "drizzle-orm": "0.45.4",
     "postgres": "3.4.9"
   }

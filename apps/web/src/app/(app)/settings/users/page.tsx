@@ -1,6 +1,6 @@
-import { getCtx, getGroups, getUsers } from "@golink/data";
+import { getCtx, getGroups, getUsers } from "@steadlink/data";
 
-import { Badge, Card } from "@golink/ui";
+import { Badge, Card } from "@steadlink/ui";
 
 export const dynamic = "force-dynamic";
 

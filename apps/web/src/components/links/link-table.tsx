@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge, Button, Checkbox, DropdownMenu, Tag as TagChip } from "@golink/ui";
+import { Badge, Button, Checkbox, DropdownMenu, Tag as TagChip } from "@steadlink/ui";
 import { Archive, EyeOff, Tag } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -125,7 +125,7 @@ export function LinkTable({ rows }: { rows: LinkRow[] }) {
       ) : null}
 
       <div className="overflow-x-auto rounded-lg bg-surface shadow-card">
-        <table className="w-full border-collapse text-left text-sm">
+        <table className="w-full table-fixed border-collapse text-left text-sm md:table-auto">
           <caption className="sr-only">Your short links</caption>
           <thead>
             <tr className="border-b border-border bg-surface-2">
@@ -148,25 +148,25 @@ export function LinkTable({ rows }: { rows: LinkRow[] }) {
               </th>
               <th
                 scope="col"
-                className="px-3 py-2.5 text-xs font-semibold tracking-wide text-muted uppercase"
+                className="w-[34%] px-3 py-2.5 text-xs font-semibold tracking-wide text-muted uppercase md:w-auto"
               >
                 Short link
               </th>
               <th
                 scope="col"
-                className="px-3 py-2.5 text-xs font-semibold tracking-wide text-muted uppercase"
+                className="hidden px-3 py-2.5 text-xs font-semibold tracking-wide text-muted uppercase sm:table-cell"
               >
                 Status
               </th>
               <th
                 scope="col"
-                className="px-3 py-2.5 text-right text-xs font-semibold tracking-wide text-muted uppercase"
+                className="hidden px-3 py-2.5 text-right text-xs font-semibold tracking-wide text-muted uppercase md:table-cell"
               >
                 Engagement
               </th>
               <th
                 scope="col"
-                className="px-3 py-2.5 text-xs font-semibold tracking-wide text-muted uppercase"
+                className="hidden px-3 py-2.5 text-xs font-semibold tracking-wide text-muted uppercase lg:table-cell"
               >
                 Created
               </th>
@@ -204,7 +204,7 @@ export function LinkTable({ rows }: { rows: LinkRow[] }) {
                 <td className="px-3 py-3">
                   <Link
                     href={`/links/${row.id}`}
-                    className="font-mono text-xs text-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                    className="block max-w-full truncate font-mono text-xs text-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                   >
                     {row.domainHost}/{row.code}
                   </Link>
@@ -212,13 +212,13 @@ export function LinkTable({ rows }: { rows: LinkRow[] }) {
                     <span className="mt-1 block text-xs text-subtle">Has a QR code</span>
                   ) : null}
                 </td>
-                <td className="px-3 py-3">
+                <td className="hidden px-3 py-3 sm:table-cell">
                   <Badge tone={STATE_TONE[row.state]}>{row.state}</Badge>
                 </td>
-                <td className="px-3 py-3 text-right tabular-nums text-foreground">
+                <td className="hidden px-3 py-3 text-right tabular-nums text-foreground md:table-cell">
                   {formatNumber(row.engagementCount)}
                 </td>
-                <td className="px-3 py-3 whitespace-nowrap text-muted">
+                <td className="hidden px-3 py-3 whitespace-nowrap text-muted lg:table-cell">
                   {formatDate(row.createdAt)}
                 </td>
                 <td className="px-3 py-3">

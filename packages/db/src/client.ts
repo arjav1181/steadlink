@@ -21,8 +21,8 @@ import * as schema from "./schema.ts";
 export type Database = PostgresJsDatabase<typeof schema>;
 
 const globalForDb = globalThis as unknown as {
-  golinkSql?: ReturnType<typeof postgres>;
-  golinkDb?: Database;
+  steadlinkSql?: ReturnType<typeof postgres>;
+  steadlinkDb?: Database;
 };
 
 function connectionString(): string {
@@ -53,14 +53,14 @@ export function createClient(url: string, max = 1) {
 
 /** The raw pooled client. Reused across hot reloads in development. */
 export function client() {
-  if (!globalForDb.golinkSql) {
+  if (!globalForDb.steadlinkSql) {
     // The row type drives postgres.js's parameter types. Left at the default
     // it collapses every parameter to `never`, and every query stops type
     // checking. This client runs hand-written SQL, so the parameters are
     // checked by the database rather than by the compiler.
     // The row type would collapse the parameters to never, and the
     // parameters are checked by the database instead.
-    globalForDb.golinkSql = postgres<any>(connectionString(), {
+    globalForDb.steadlinkSql = postgres<any>(connectionString(), {
       max: Number(process.env.DATABASE_POOL_MAX ?? 10),
       // The app sets `app.current_org_id` per transaction, so the session
       // cannot hold a pooled connection with a stale scope.
@@ -78,14 +78,14 @@ export function client() {
           : undefined,
     });
   }
-  return globalForDb.golinkSql;
+  return globalForDb.steadlinkSql;
 }
 
 export function db(): Database {
-  if (!globalForDb.golinkDb) {
-    globalForDb.golinkDb = drizzle(client(), { schema });
+  if (!globalForDb.steadlinkDb) {
+    globalForDb.steadlinkDb = drizzle(client(), { schema });
   }
-  return globalForDb.golinkDb;
+  return globalForDb.steadlinkDb;
 }
 
 /** An alias for client(), kept because it reads better at the call site. */

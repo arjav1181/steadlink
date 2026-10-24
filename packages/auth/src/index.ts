@@ -2,7 +2,7 @@
  * better-auth configuration.
  *
  * better-auth owns identity: users, sessions, accounts, organizations,
- * members, invitations and API keys. The domain tables in @golink/db point
+ * members, invitations and API keys. The domain tables in @steadlink/db point
  * at them.
  *
  * Every credential in here comes from the operator's own environment. This
@@ -16,7 +16,7 @@
  */
 
 import { apiKey } from "@better-auth/api-key";
-import { createWorkspaceDefaults, db, schema } from "@golink/db";
+import { createWorkspaceDefaults, db, schema } from "@steadlink/db";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { jwt, organization } from "better-auth/plugins";
@@ -32,7 +32,7 @@ function createAuth() {
   }
 
   return betterAuth({
-    appName: "GoLink",
+    appName: "Steadlink",
     baseURL,
     secret: secret ?? "development-only-secret-change-me",
     database: drizzleAdapter(db(), {
@@ -54,7 +54,7 @@ function createAuth() {
       enabled: true,
       // The email is sent by our own sender, not by better-auth's default.
       sendResetPassword: async ({ user, token }) => {
-        const { sendPasswordReset } = await import("@golink/email");
+        const { sendPasswordReset } = await import("@steadlink/email");
         await sendPasswordReset(user.email, token);
       },
       autoSignIn: true,
@@ -64,7 +64,7 @@ function createAuth() {
     emailVerification: {
       sendOnSignUp: true,
       sendVerificationEmail: async ({ user, token }) => {
-        const { sendVerificationEmail } = await import("@golink/email");
+        const { sendVerificationEmail } = await import("@steadlink/email");
         await sendVerificationEmail(user.email, token);
       },
       autoSignInAfterVerification: true,
@@ -119,7 +119,7 @@ function createAuth() {
     advanced: {
       // UUIDs, so the id spaces match the domain tables.
       database: { generateId: "uuid" },
-      cookiePrefix: "golink",
+      cookiePrefix: "steadlink",
       // Whether the cookie is secure follows the request, not the build. A
       // self-hosted install is often on plain http on a private network, and
       // a cookie with the `__Secure-` prefix is refused there — which

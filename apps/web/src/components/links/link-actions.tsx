@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Modal } from "@golink/ui";
+import { Button, Modal } from "@steadlink/ui";
 import { Eye, EyeOff, Pencil } from "lucide-react";
 import { useRouter } from "next/navigation";
 import * as React from "react";

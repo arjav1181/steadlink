@@ -6,7 +6,7 @@
  * link and a printed code never goes stale.
  */
 
-import { createQrCode, getQrCode, listQrCodes } from "@golink/data";
+import { createQrCode, getQrCode, listQrCodes } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import {

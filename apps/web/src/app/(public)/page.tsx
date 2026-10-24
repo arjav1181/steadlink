@@ -1,9 +1,9 @@
-import { Badge, Button, Card } from "@golink/ui";
+import { Badge, Button, Card } from "@steadlink/ui";
 import { ArrowRight, BarChart3, Globe, QrCode, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
-  title: "GoLink — short links, QR codes and analytics you own",
+  title: "Steadlink — short links, QR codes and analytics you own",
   description:
     "A self-hosted link manager: branded short links, QR codes, landing pages, and click analytics.",
 };
@@ -12,17 +12,17 @@ const FEATURES = [
   {
     icon: Globe,
     title: "Links on your own domain",
-    body: "Point a domain you already own at GoLink and every short link carries your name, not ours.",
+    body: "Point a domain you own at Steadlink. Every short link on it carries your name, and the domain is yours to move.",
   },
   {
     icon: QrCode,
     title: "QR codes for anything",
-    body: "Print a code for a poster, a package or a table card. Restyle it later without reprinting.",
+    body: "Print a code for a poster, a package or a table card. Restyle it later; the code on the sheet does not change.",
   },
   {
     icon: BarChart3,
     title: "Clicks you can act on",
-    body: "See where your traffic came from, on which device, from which country, and when it happened.",
+    body: "See where the click came from, on which device, from which country, and when. The history stays as long as the link does.",
   },
   {
     icon: Sparkles,
@@ -39,30 +39,24 @@ export default function MarketingHome() {
           <span className="flex items-center gap-2">
             <svg viewBox="0 0 32 32" className="size-8" aria-hidden="true">
               <rect width="32" height="32" rx="7" fill="var(--color-accent)" />
-              <path
-                d="M11 20.5 20.5 11"
-                stroke="var(--color-accent-foreground)"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-              />
               <circle
-                cx="11.5"
-                cy="11.5"
-                r="3"
+                cx="16"
+                cy="12.6"
+                r="6"
                 fill="none"
                 stroke="var(--color-accent-foreground)"
-                strokeWidth="2.4"
+                strokeWidth="3.2"
               />
-              <circle
-                cx="20.5"
-                cy="20.5"
-                r="3"
-                fill="none"
-                stroke="var(--color-accent-foreground)"
-                strokeWidth="2.4"
+              <rect
+                x="6"
+                y="20.6"
+                width="20"
+                height="3.4"
+                rx="1.7"
+                fill="var(--color-accent-foreground)"
               />
             </svg>
-            <span className="text-lg font-bold text-foreground">GoLink</span>
+            <span className="text-lg font-bold text-foreground">Steadlink</span>
           </span>
           <nav aria-label="Primary" className="ml-8 hidden gap-6 sm:flex">
             <a href="#features" className="text-sm text-muted hover:text-foreground">
@@ -93,27 +87,28 @@ export default function MarketingHome() {
         {/* Hero */}
         <section className="mx-auto max-w-content px-gutter py-20">
           <div className="max-w-2xl">
-            <Badge tone="neutral">Open source, self-hosted</Badge>
+            <Badge tone="neutral">Your domain. Your data. Your links.</Badge>
             <h1 className="mt-5 text-4xl leading-tight font-bold tracking-tight text-foreground sm:text-5xl">
-              Short links you own, with the numbers to prove they worked.
+              The link you printed still works.
             </h1>
             <p className="mt-5 text-lg text-muted">
-              GoLink shortens a URL, puts it on your own domain, and shows you who clicked it and
-              from where. QR codes, landing pages and campaigns come with it.
+              Steadlink puts short links and QR codes on a domain you own. The click goes straight
+              to the destination - no page in between, no ad, no countdown - and the numbers are
+              yours to keep.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button size="lg" asChild>
                 <Link href="/sign-up">
-                  Create a link
+                  Make a link
                   <ArrowRight aria-hidden="true" className="size-4" />
                 </Link>
               </Button>
               <Button size="lg" variant="secondary" asChild>
-                <Link href="/sign-in">See the dashboard</Link>
+                <Link href="/check">Check a link</Link>
               </Button>
             </div>
             <p className="mt-4 text-sm text-muted">
-              Bring your own database. No usage meter on a shared platform.
+              Your own database, your own server. No per-click meter.
             </p>
           </div>
         </section>
@@ -189,7 +184,7 @@ export default function MarketingHome() {
                   "Postgres for everything, with row-level security per workspace",
                   "A v4-compatible REST API and signed webhooks",
                   "QR codes rendered as SVG or PNG, with your own colours and logo",
-                  "No account with us. No data leaving your machine.",
+                  "Your data stays on your machine. Nothing leaves it.",
                 ].map((line) => (
                   <li key={line} className="flex items-start gap-3 text-sm text-foreground">
                     <span
@@ -207,8 +202,8 @@ export default function MarketingHome() {
 
       <footer className="border-t border-border bg-surface">
         <div className="mx-auto flex max-w-content flex-wrap items-center gap-4 px-gutter py-6 text-sm text-muted">
-          <span className="font-semibold text-foreground">GoLink</span>
-          <span>Self-hosted link management.</span>
+          <span className="font-semibold text-foreground">Steadlink</span>
+          <span>Your links, on your own domain.</span>
           <div className="ml-auto flex gap-4">
             <Link href="/check" className="hover:text-foreground">
               Check a link
@@ -217,7 +212,7 @@ export default function MarketingHome() {
               Sign in
             </Link>
             <Link href="/sign-up" className="hover:text-foreground">
-              Create an account
+              Create the workspace
             </Link>
           </div>
         </div>

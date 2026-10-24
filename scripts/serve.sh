@@ -38,11 +38,11 @@ fi
 sleep 1
 
 if [ "$MODE" = "dev" ]; then
-  corepack pnpm --filter @golink/web dev &
+  corepack pnpm --filter @steadlink/web dev &
 else
   rm -rf apps/web/.next
-  corepack pnpm --filter @golink/web build >/dev/null
-  corepack pnpm --filter @golink/web start &
+  corepack pnpm --filter @steadlink/web build >/dev/null
+  corepack pnpm --filter @steadlink/web start &
 fi
 
 SERVER_PID=$!

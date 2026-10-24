@@ -1,23 +1,23 @@
 {
-  "name": "golink",
+  "name": "steadlink",
   "private": true,
   "packageManager": "pnpm@12.14.0",
   "engines": {
     "node": ">=24.0.0"
   },
   "scripts": {
-    "dev": "pnpm --filter @golink/web dev",
-    "build": "pnpm --filter @golink/web build",
-    "start": "pnpm --filter @golink/web start",
+    "dev": "pnpm --filter @steadlink/web dev",
+    "build": "pnpm --filter @steadlink/web build",
+    "start": "pnpm --filter @steadlink/web start",
     "lint": "biome check .",
     "typecheck": "pnpm -r typecheck",
-    "seed": "pnpm --filter @golink/db seed && node --experimental-strip-types scripts/seed-passwords.ts",
-    "migrate": "pnpm --filter @golink/db migrate",
-    "test:access": "pnpm --filter @golink/db test && pnpm --filter @golink/data test",
+    "seed": "pnpm --filter @steadlink/db seed && node --experimental-strip-types scripts/seed-passwords.ts",
+    "migrate": "pnpm --filter @steadlink/db migrate",
+    "test:access": "pnpm --filter @steadlink/db test && pnpm --filter @steadlink/data test",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:report": "playwright show-report e2e-report",
-    "worker": "pnpm --filter @golink/worker start"
+    "worker": "pnpm --filter @steadlink/worker start"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.11.0",

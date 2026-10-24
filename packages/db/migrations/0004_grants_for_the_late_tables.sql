@@ -14,18 +14,18 @@
 --  The grant is repeated here, and the migration runner repeats it after
 --  every run, so a table added by a later migration is not stranded.
 -- ============================================================================
-grant usage on schema public to golink_app, golink_worker;
-grant select, insert, update, delete on all tables in schema public to golink_app, golink_worker;
-grant usage, select on all sequences in schema public to golink_app, golink_worker;
+grant usage on schema public to steadlink_app, steadlink_worker;
+grant select, insert, update, delete on all tables in schema public to steadlink_app, steadlink_worker;
+grant usage, select on all sequences in schema public to steadlink_app, steadlink_worker;
 --> statement-breakpoint
 
 -- The application writes outgoing mail, so a local install with no mail
 -- provider still has the message to look at. It never reads it: a password
 -- reset token belonging to another workspace is not the application's
 -- business, and the table has no organization column to filter on.
-revoke select on table mail_outbox from golink_app;
+revoke select on table mail_outbox from steadlink_app;
 --> statement-breakpoint
 
 -- The list of deleted accounts belongs to the worker alone. It is the part
 -- that decides what may be purged, and the application never touches it.
-revoke all on table deleted_accounts from golink_app;
+revoke all on table deleted_accounts from steadlink_app;

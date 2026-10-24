@@ -16,8 +16,8 @@
  */
 
 import { createHash, randomBytes } from "node:crypto";
-import { client, db, type Scope } from "@golink/db";
-import * as schema from "@golink/db/schema";
+import { client, db, type Scope } from "@steadlink/db";
+import * as schema from "@steadlink/db/schema";
 import { and, asc, desc, sql as dsql, eq, inArray } from "drizzle-orm";
 
 import { checkDnsRecords, type DnsRecord } from "./dns.ts";
@@ -87,6 +87,20 @@ interface SqlClient {
 }
 
 const rawClient = client() as unknown as SqlClient;
+
+/**
+ * Several statements as one transaction, with the organization in scope.
+ *
+ * `client_` gives every statement a transaction of its own, which is right
+ * for a single read or write and wrong for a write that only makes sense if
+ * the next one lands.
+ */
+async function inOneTransaction<T>(orgId: string, fn: (tx: SqlClient) => Promise<T>): Promise<T> {
+  return rawClient.begin(async (tx) => {
+    await tx`select set_config('app.org_id', ${orgId}, true)`;
+    return fn(tx);
+  });
+}
 
 /**
  * The client every hand-written query goes through.
@@ -2162,28 +2176,46 @@ export async function listCampaigns(ctx: Ctx) {
 }
 
 export async function createCampaign(ctx: Ctx, name: string, channels: string[]) {
+  // The same channel twice is one channel. The dialog starts with the
+  // workspace's channels already in the field, so a repeat is easy to
+  // produce and is not a mistake a person should be shown: it used to
+  // arrive as a unique violation on (campaign_id, name).
+  const wanted = [...new Set(channels.map((channel) => channel.trim()).filter(Boolean))];
+  const title = name.trim();
   return withOrg(ctx.orgId, async () => {
     await assertCan(ctx, "create");
-    if (!channels.length)
+    // The create button sits in the dialog's footer, outside the form, so
+    // the input's `required` never runs. An empty name reached the database
+    // and made a campaign with nothing written on it.
+    if (!title) throw new DataError("A campaign needs a name.", "NO_NAME");
+    if (!wanted.length)
       throw new DataError("A campaign needs at least one channel.", "NO_CHANNELS");
-    const rows = await client_`
-      insert into campaigns (org_id, group_id, name, created_by)
-      values (${ctx.orgId}, ${ctx.groupId}, ${name}, ${ctx.userId})
-      returning *
-    `;
-    for (const channel of channels) {
-      await client_`
-        insert into channels (org_id, campaign_id, name)
-        values (${ctx.orgId}, ${rows[0]!.id}, ${channel})
+
+    // The campaign and its channels are one write. A campaign that lost its
+    // channels to a failed insert is not a campaign anybody asked for, and
+    // `client_` gives every statement a transaction of its own.
+    const campaign = await inOneTransaction(ctx.orgId, async (tx) => {
+      const rows = await tx`
+        insert into campaigns (org_id, group_id, name, created_by)
+        values (${ctx.orgId}, ${ctx.groupId}, ${title}, ${ctx.userId})
+        returning *
       `;
-    }
-    await logActivity(ctx, "campaign.created", "campaign", rows[0]!.id, { name });
+      for (const channel of wanted) {
+        await tx`
+          insert into channels (org_id, campaign_id, name)
+          values (${ctx.orgId}, ${rows[0]!.id}, ${channel})
+        `;
+      }
+      return rows[0]!;
+    });
+
+    await logActivity(ctx, "campaign.created", "campaign", campaign.id, { name: title });
     await enqueueWebhook(ctx.orgId, "campaign.created", {
       event: "campaign.created",
       created_at: new Date().toISOString(),
-      campaign: { id: rows[0]!.id, name: rows[0]!.name },
+      campaign: { id: campaign.id, name: campaign.name },
     });
-    return rows[0]!;
+    return campaign;
   });
 }
 
@@ -2285,10 +2317,10 @@ export async function addDomain(ctx: Ctx, host: string) {
   if (existing.length) throw new DataError("That domain is already added.", "DOMAIN_EXISTS");
   // The token is what proves the domain is yours. It is per domain, so a
   // token cannot be copied from one domain to another.
-  const token = `golink-verify=${randomBytes(12).toString("hex")}`;
+  const token = `steadlink-verify=${randomBytes(12).toString("hex")}`;
   const records = [
-    { type: "CNAME", name: "go", value: "proxy.golink.dev" },
-    { type: "TXT", name: "_golink", value: token },
+    { type: "CNAME", name: "go", value: "proxy.steadlink.dev" },
+    { type: "TXT", name: "_steadlink", value: token },
   ];
   const rows = await client_`
     insert into domains (org_id, host, kind, dns_records, verification_status)
@@ -2610,7 +2642,7 @@ async function enqueueWebhook(
       `;
     });
   } catch (error) {
-    console.error("[golink] a webhook delivery could not be queued", error);
+    console.error("[steadlink] a webhook delivery could not be queued", error);
   }
 }
 

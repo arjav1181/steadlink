@@ -3,7 +3,7 @@
  * for better-auth's own tables.
  *
  * The real config lives in ./src/index.ts and imports the domain tables from
- * @golink/db. This one has no such dependency, so the generator can run
+ * @steadlink/db. This one has no such dependency, so the generator can run
  * without a circular import, and it writes to a plain Drizzle instance
  * rather than the pooled one.
  *
@@ -17,12 +17,12 @@ import { drizzle } from "drizzle-orm/postgres-js";
 import postgres from "postgres";
 
 const client = postgres(
-  process.env.DATABASE_URL ?? "postgres://postgres:postgres@127.0.0.1:55440/golink",
+  process.env.DATABASE_URL ?? "postgres://postgres:postgres@127.0.0.1:55440/steadlink",
   { max: 1 },
 );
 
 export const auth = betterAuth({
-  appName: "GoLink",
+  appName: "Steadlink",
   baseURL: process.env.BETTER_AUTH_URL ?? "http://localhost:3210",
   secret: process.env.BETTER_AUTH_SECRET ?? "development-only-secret-change-me",
   database: drizzleAdapter(drizzle(client), { provider: "pg" }),

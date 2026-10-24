@@ -26,7 +26,7 @@ test.describe("F01 create a short link", () => {
     await dialog.getByLabel("Back-half").fill("f01-happy");
     await dialog.getByLabel("Title").fill("Spring collection");
     await dialog.getByLabel("Tags").fill("launch, spring");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
 
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
     await expect(page.getByRole("heading", { name: /spring collection/i })).toBeVisible();
@@ -60,7 +60,7 @@ test.describe("F01 create a short link", () => {
 
     const dialog = page.getByRole("dialog");
     await dialog.getByLabel("Destination URL").fill("not a url");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
 
     // The browser's own check refuses it, so the page never leaves the
     // dialog and no link is made.
@@ -76,7 +76,7 @@ test.describe("F01 create a short link", () => {
     const dialog = page.getByRole("dialog");
     await dialog.getByLabel("Destination URL").fill("https://example.com/other");
     await dialog.getByLabel("Back-half").fill("spring");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
 
     await expect(dialog.getByRole("alert")).toContainText(/already taken/i);
     await expect(page).toHaveURL(/\/links/);
@@ -90,7 +90,7 @@ test.describe("F01 create a short link", () => {
     const dialog = page.getByRole("dialog");
     await dialog.getByLabel("Destination URL").fill("https://example.com/other");
     await dialog.getByLabel("Back-half").fill("has spaces");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
 
     await expect(dialog).toBeVisible();
     await expect(page).toHaveURL(/\/links/);
@@ -104,7 +104,7 @@ test.describe("F01 create a short link", () => {
     const dialog = page.getByRole("dialog");
     await dialog.getByLabel("Destination URL").fill("https://example.com/other");
     await dialog.getByLabel("Back-half").fill("dashboard");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
 
     await expect(dialog.getByRole("alert")).toContainText(/reserved/i);
     expectNoErrors(errors);
@@ -117,7 +117,7 @@ test.describe("F01 create a short link", () => {
     const dialog = page.getByRole("dialog");
     await dialog.getByLabel("Destination URL").fill("https://example.com/double");
     await dialog.getByLabel("Back-half").fill("f01-double");
-    const submit = dialog.getByRole("button", { name: "Create link" });
+    const submit = dialog.getByRole("button", { name: "Make the link" });
     // Two clicks in one go, the way a double click arrives.
     await submit.dblclick();
 
@@ -135,14 +135,14 @@ test.describe("F01 create a short link", () => {
     let dialog = page.getByRole("dialog");
     await dialog.getByLabel("Destination URL").fill(destination);
     await dialog.getByLabel("Back-half").fill("f01-dup-1");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
 
     await page.goto("/links?new=1");
     dialog = page.getByRole("dialog");
     await dialog.getByLabel("Destination URL").fill(destination);
     await dialog.getByLabel("Back-half").fill("f01-dup-2");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
 
     expectNoErrors(errors);
@@ -156,7 +156,7 @@ test.describe("F01 create a short link", () => {
     await page.getByLabel("Workspace name").fill("E2E New Workspace");
     await page.getByLabel("Email").fill("e2e-new@example.com");
     await page.getByLabel("Password").fill(TEST_PASSWORD);
-    await page.getByRole("button", { name: "Create account" }).click();
+    await page.getByRole("button", { name: "Create the workspace" }).click();
 
     await page.waitForURL(/\/(dashboard|links)/, { timeout: 30_000 });
 
@@ -170,7 +170,7 @@ test.describe("F01 create a short link", () => {
 
     await dialog.getByLabel("Destination URL").fill("https://example.com/first-link");
     await dialog.getByLabel("Back-half").fill("first");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
 
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
     await expect(page.getByRole("heading", { name: /first-link|first/i })).toBeVisible();
@@ -183,7 +183,7 @@ test.describe("F01 create a short link", () => {
     const dialog = page.getByRole("dialog");
     await dialog.getByLabel("Destination URL").fill("https://example.com/isolated");
     await dialog.getByLabel("Back-half").fill("f01-isolated");
-    await dialog.getByRole("button", { name: "Create link" }).click();
+    await dialog.getByRole("button", { name: "Make the link" }).click();
     await page.waitForURL(/\/links\/[0-9a-f-]{36}$/, { timeout: 20_000 });
     const linkId = page.url().split("/").pop();
 

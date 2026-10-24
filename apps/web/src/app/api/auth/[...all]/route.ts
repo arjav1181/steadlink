@@ -11,7 +11,7 @@
  * request arrives.
  */
 
-import { getAuth } from "@golink/auth";
+import { getAuth } from "@steadlink/auth";
 
 export const dynamic = "force-dynamic";
 

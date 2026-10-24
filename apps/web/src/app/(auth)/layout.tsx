@@ -12,30 +12,24 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           >
             <svg viewBox="0 0 32 32" className="size-8" aria-hidden="true">
               <rect width="32" height="32" rx="7" fill="var(--color-accent)" />
-              <path
-                d="M11 20.5 20.5 11"
-                stroke="var(--color-accent-foreground)"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-              />
               <circle
-                cx="11.5"
-                cy="11.5"
-                r="3"
+                cx="16"
+                cy="12.6"
+                r="6"
                 fill="none"
                 stroke="var(--color-accent-foreground)"
-                strokeWidth="2.4"
+                strokeWidth="3.2"
               />
-              <circle
-                cx="20.5"
-                cy="20.5"
-                r="3"
-                fill="none"
-                stroke="var(--color-accent-foreground)"
-                strokeWidth="2.4"
+              <rect
+                x="6"
+                y="20.6"
+                width="20"
+                height="3.4"
+                rx="1.7"
+                fill="var(--color-accent-foreground)"
               />
             </svg>
-            <span className="text-lg font-bold text-foreground">GoLink</span>
+            <span className="text-lg font-bold text-foreground">Steadlink</span>
           </Link>
           <div className="mt-8">{children}</div>
         </div>

@@ -11,7 +11,7 @@ import { expect, type Page } from "@playwright/test";
 import postgres from "postgres";
 
 /** The password every seeded test account has. */
-export const TEST_PASSWORD = "golink-demo-password";
+export const TEST_PASSWORD = "steadlink-demo-password";
 
 /** The people the seed creates. */
 export const USERS = {
@@ -25,9 +25,9 @@ export const USERS = {
 
 export type UserKey = keyof typeof USERS;
 
-const DATABASE_NAME = process.env.E2E_DATABASE_NAME ?? "golink_test";
+const DATABASE_NAME = process.env.E2E_DATABASE_NAME ?? "steadlink_test";
 const DATABASE_URL =
-  process.env.E2E_DATABASE_URL ?? `postgres://golink:golink@127.0.0.1:55440/${DATABASE_NAME}`;
+  process.env.E2E_DATABASE_URL ?? `postgres://steadlink:steadlink@127.0.0.1:55440/${DATABASE_NAME}`;
 
 /** A direct connection to the test database, for the assertions the page cannot make. */
 export function db() {
@@ -44,7 +44,7 @@ export function db() {
 export function adminDb() {
   return postgres(
     process.env.E2E_SUPER_URL ??
-      `postgres://postgres:postgres@127.0.0.1:55440/${process.env.E2E_DATABASE_NAME ?? "golink_test"}`,
+      `postgres://postgres:postgres@127.0.0.1:55440/${process.env.E2E_DATABASE_NAME ?? "steadlink_test"}`,
     { max: 1, onnotice: () => undefined },
   );
 }
@@ -96,7 +96,12 @@ export async function signInAsOther(page: Page) {
 export function watchForErrors(page: Page) {
   const errors: string[] = [];
   page.on("console", (message) => {
-    if (message.type() === "error") errors.push(`console: ${message.text()}`);
+    if (message.type() !== "error") return;
+    // Chromium's text for a failed request does not say which request it
+    // was, and "a 404 somewhere on the page" is not a report anyone can act
+    // on. The location is the URL.
+    const where = message.location().url;
+    errors.push(where ? `console: ${message.text()} (${where})` : `console: ${message.text()}`);
   });
   page.on("pageerror", (error) => {
     errors.push(`page error: ${error.message}`);

@@ -5,7 +5,7 @@
  * to the default group rather than going with it.
  */
 
-import { deleteGroup, updateGroup } from "@golink/data";
+import { deleteGroup, updateGroup } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import { handle, json, optionalString } from "@/server/api-response";

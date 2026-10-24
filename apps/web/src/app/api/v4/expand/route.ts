@@ -11,7 +11,7 @@
  * never here" and "that code was here and has since been retired".
  */
 
-import { getLinkByCode } from "@golink/data";
+import { getLinkByCode } from "@steadlink/data";
 
 import { handle, json, queryParam } from "@/server/api-response";
 import { callerAddress, limitHeaders, take } from "@/server/rate-limit";

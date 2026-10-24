@@ -5,7 +5,7 @@
  * it to a spreadsheet without a library. One row per day per dimension.
  */
 
-import { getLink, getLinkMetrics, rangeFromDays } from "@golink/data";
+import { getLink, getLinkMetrics, rangeFromDays } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import { handle, queryNumber, queryParam } from "@/server/api-response";
@@ -55,7 +55,7 @@ export async function GET(request: Request, context: Params) {
       }
     }
 
-    const filename = `golink-${link.code}-${dimension}.csv`;
+    const filename = `steadlink-${link.code}-${dimension}.csv`;
     return new Response(`${lines.join("\n")}\n`, {
       headers: {
         "Content-Type": "text/csv; charset=utf-8",

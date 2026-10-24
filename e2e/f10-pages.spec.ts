@@ -11,6 +11,19 @@ const test = makeTest();
  */
 
 test.describe("F10 pages", () => {
+  test("F10-H0 the front door is the pitch, not a placeholder", async ({ page, errors }) => {
+    // Two files resolved to "/": the marketing page under the (public) route
+    // group, and a scaffold placeholder beside it. The placeholder won, so
+    // the product's front door was a heading, one line and a link to the
+    // design system.
+    await page.goto("/");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+      "The link you printed still works.",
+    );
+    await expect(page.getByRole("link", { name: "Make a link" }).first()).toBeVisible();
+    expectNoErrors(errors);
+  });
+
   test("F10-H1 a page can be made from a template", async ({ page, errors }) => {
     await signIn(page);
     await page.goto("/pages?new=1");

@@ -55,16 +55,16 @@ const journal = JSON.parse(
 // The roles the RLS policies refer to. CREATE ROLE cannot be conditional in
 // plain SQL, and a DO block cannot be sent through this client, so the check
 // and the create happen here.
-for (const role of ["golink_app", "golink_worker"]) {
+for (const role of ["steadlink_app", "steadlink_worker"]) {
   const exists = await client<{ rolname: string }[]>`
     select rolname from pg_roles where rolname = ${role}
   `;
   if (exists.length === 0) {
     console.log(`creating role ${role}`);
     await client.unsafe(
-      role === "golink_worker"
-        ? "create role golink_worker nologin bypassrls"
-        : "create role golink_app nologin",
+      role === "steadlink_worker"
+        ? "create role steadlink_worker nologin bypassrls"
+        : "create role steadlink_app nologin",
     );
   }
 }
@@ -128,8 +128,8 @@ console.log(`migrations applied: ${ran} run, ${skipped} already applied`);
 // operator configured, so the app can actually set the scope.
 //
 // The two roles are separate on purpose. Membership of a role with
-// BYPASSRLS is inherited, so a role that holds both golink_app and
-// golink_worker would bypass every policy.
+// BYPASSRLS is inherited, so a role that holds both steadlink_app and
+// steadlink_worker would bypass every policy.
 const appRole = process.env.DATABASE_APP_ROLE;
 const workerRole = process.env.DATABASE_WORKER_ROLE;
 
@@ -149,8 +149,8 @@ const grant = async (role: string, group: string) => {
   console.log(`granted ${group} to ${role}`);
 };
 
-if (appRole) await grant(appRole, "golink_app");
-if (workerRole) await grant(workerRole, "golink_worker");
+if (appRole) await grant(appRole, "steadlink_app");
+if (workerRole) await grant(workerRole, "steadlink_worker");
 
 // The privileges on the tables, repeated after every run.
 //
@@ -164,11 +164,11 @@ if (workerRole) await grant(workerRole, "golink_worker");
 // exceptions are made again with it.
 console.log("granting the table privileges");
 await client.unsafe(`
-  grant usage on schema public to golink_app, golink_worker;
-  grant select, insert, update, delete on all tables in schema public to golink_app, golink_worker;
-  grant usage, select on all sequences in schema public to golink_app, golink_worker;
-  revoke select on table mail_outbox from golink_app;
-  revoke all on table deleted_accounts from golink_app;
+  grant usage on schema public to steadlink_app, steadlink_worker;
+  grant select, insert, update, delete on all tables in schema public to steadlink_app, steadlink_worker;
+  grant usage, select on all sequences in schema public to steadlink_app, steadlink_worker;
+  revoke select on table mail_outbox from steadlink_app;
+  revoke all on table deleted_accounts from steadlink_app;
 `);
 
 await client.end();

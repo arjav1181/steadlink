@@ -39,7 +39,7 @@ import {
   Toggle,
   TooltipProvider,
   UsageBar,
-} from "@golink/ui";
+} from "@steadlink/ui";
 import {
   ArrowRight,
   BarChart3,
@@ -116,7 +116,7 @@ export default function DesignPage() {
         {/* ---------------------------------------------------------------- */}
         <header className="border-b border-border bg-surface">
           <div className="mx-auto flex max-w-content items-center gap-4 px-gutter py-4">
-            <h1 className="text-lg font-bold text-foreground">GoLink design system</h1>
+            <h1 className="text-lg font-bold text-foreground">Steadlink design system</h1>
             <Badge tone="neutral">v0.1</Badge>
             <p className="ml-auto text-sm text-muted">
               Roles only. No raw hex values below this line.
@@ -499,11 +499,16 @@ export default function DesignPage() {
                     <p className="mb-3 text-sm font-semibold text-foreground">DNS records</p>
                     <DnsRecordTable
                       records={[
-                        { type: "CNAME", name: "go", value: "proxy.golink.dev", state: "verified" },
+                        {
+                          type: "CNAME",
+                          name: "go",
+                          value: "proxy.steadlink.dev",
+                          state: "verified",
+                        },
                         {
                           type: "TXT",
-                          name: "_golink",
-                          value: "golink-verify=8f2a1c",
+                          name: "_steadlink",
+                          value: "steadlink-verify=8f2a1c",
                           state: "pending",
                         },
                       ]}

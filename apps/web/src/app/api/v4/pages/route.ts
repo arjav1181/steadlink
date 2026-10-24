@@ -5,7 +5,7 @@
  * site of its own, published under `/p/{slug}`.
  */
 
-import { createPage, listPages } from "@golink/data";
+import { createPage, listPages } from "@steadlink/data";
 
 import { authenticate } from "@/server/api-auth";
 import { handle, json, optionalString, queryParam, requireString } from "@/server/api-response";

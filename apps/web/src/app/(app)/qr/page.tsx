@@ -1,5 +1,5 @@
-import { getCtx, listQrCodes, listQrTemplates } from "@golink/data";
-import { Badge, Button, Card, EmptyState, QrPreview, Tag as TagChip } from "@golink/ui";
+import { getCtx, listQrCodes, listQrTemplates } from "@steadlink/data";
+import { Badge, Button, Card, EmptyState, QrPreview, Tag as TagChip } from "@steadlink/ui";
 import { Plus, QrCode } from "lucide-react";
 import Link from "next/link";
 
@@ -64,7 +64,7 @@ export default async function QrCodesPage({
         <EmptyState
           icon={<QrCode aria-hidden="true" />}
           title="No QR codes yet"
-          body="A code points at a link you already have, or straight at a page. You can change where it goes later."
+          body="A code points at a link you already have, or at a page of its own. Where it points can change later; the code on the sheet does not."
           action={
             <Button asChild>
               <Link href="/qr?new=1">Make a QR code</Link>

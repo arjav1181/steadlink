@@ -13,7 +13,7 @@
  *     destination would become unchangeable
  */
 
-import { recordEngagement, resolveRedirect } from "@golink/data";
+import { recordEngagement, resolveRedirect } from "@steadlink/data";
 
 export interface RequestFacts {
   userAgent: string | null;

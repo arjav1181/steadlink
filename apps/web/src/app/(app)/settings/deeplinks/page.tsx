@@ -1,6 +1,6 @@
-import { getCtx, listLinks } from "@golink/data";
+import { getCtx, listLinks } from "@steadlink/data";
 
-import { Card } from "@golink/ui";
+import { Card } from "@steadlink/ui";
 
 export const dynamic = "force-dynamic";
 

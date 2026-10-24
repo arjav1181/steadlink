@@ -1,5 +1,5 @@
 {
-  "name": "@golink/auth",
+  "name": "@steadlink/auth",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -11,9 +11,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@golink/db": "workspace:*",
+    "@steadlink/db": "workspace:*",
     "better-auth": "1.7.11",
-    "@golink/email": "workspace:*",
+    "@steadlink/email": "workspace:*",
     "@better-auth/api-key": "1.7.11"
   },
   "devDependencies": {

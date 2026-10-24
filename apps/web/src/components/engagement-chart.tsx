@@ -1,7 +1,7 @@
 "use client";
 
-import type { SeriesPoint } from "@golink/data";
-import { SegmentedControl } from "@golink/ui";
+import type { SeriesPoint } from "@steadlink/data";
+import { SegmentedControl } from "@steadlink/ui";
 import * as React from "react";
 
 import { TimeSeries } from "./charts";

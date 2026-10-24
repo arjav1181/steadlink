@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Field, TextInput } from "@golink/ui";
+import { Button, Field, TextInput } from "@steadlink/ui";
 import { useRouter } from "next/navigation";
 import * as React from "react";
 
@@ -102,7 +102,7 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
       ) : null}
 
       <Button type="submit" loading={busy} className="w-full">
-        {mode === "sign-in" ? "Sign in" : "Create account"}
+        {mode === "sign-in" ? "Sign in" : "Create the workspace"}
       </Button>
     </form>
   );

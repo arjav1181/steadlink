@@ -6,7 +6,7 @@
  * shape whether it succeeded or not.
  */
 
-import { DataError, ForbiddenError } from "@golink/data";
+import { DataError, ForbiddenError } from "@steadlink/data";
 import { NextResponse } from "next/server";
 
 import { ApiError, errorBody } from "./api-auth";

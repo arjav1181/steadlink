@@ -1,6 +1,6 @@
 "use client";
 
-import { SegmentedControl } from "@golink/ui";
+import { SegmentedControl } from "@steadlink/ui";
 import { Link2, QrCode } from "lucide-react";
 import * as React from "react";
 

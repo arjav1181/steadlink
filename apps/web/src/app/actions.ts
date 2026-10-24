@@ -38,7 +38,7 @@ import {
   updateQrCode,
   updateWebhook,
   verifyDomain,
-} from "@golink/data";
+} from "@steadlink/data";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
@@ -67,7 +67,7 @@ function fail(error: unknown): ActionResult {
   // A refusal is a message for a person, not a failure to report. "Something
   // went wrong" tells them nothing about what to do.
   if (error instanceof ForbiddenError) return { ok: false, error: error.message };
-  console.error("[golink] an action failed", error);
+  console.error("[steadlink] an action failed", error);
   return { ok: false, error: "Something went wrong. Try again." };
 }
 
@@ -345,7 +345,7 @@ export async function updateBlockAction(
 
 export async function removeBlockAction(pageId: string, blockId: string): Promise<ActionResult> {
   try {
-    const { removeBlock } = await import("@golink/data");
+    const { removeBlock } = await import("@steadlink/data");
     await removeBlock(await ctx(), pageId, blockId);
     revalidatePath(`/pages/${pageId}`);
     return { ok: true, id: pageId };

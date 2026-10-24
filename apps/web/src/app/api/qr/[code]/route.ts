@@ -1,4 +1,4 @@
-import { renderQrSvg } from "@golink/ui";
+import { renderQrSvg } from "@steadlink/ui";
 import { NextResponse } from "next/server";
 
 /**
