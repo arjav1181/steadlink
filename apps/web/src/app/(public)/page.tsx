@@ -374,6 +374,12 @@ export default function Home() {
             <Link href="/docs" className="hover:text-foreground">
               Docs
             </Link>
+            <Link href="/privacy" className="hover:text-foreground">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-foreground">
+              Terms
+            </Link>
             <Link href="/sign-in" className="hover:text-foreground">
               Sign in
             </Link>
