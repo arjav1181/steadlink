@@ -1,5 +1,11 @@
 # Steadlink
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Next.js](https://img.shields.io/badge/Next.js-16-000?logo=next.js&logoColor=white)](apps/web)
+[![TypeScript](https://img.shields.io/badge/TypeScript-7-3178C6?logo=typescript&logoColor=white)](apps/web)
+[![Postgres](https://img.shields.io/badge/PostgreSQL-17-4169E1?logo=postgresql&logoColor=white)](packages/db)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)](Dockerfile)
+
 A self-hosted short link service: links, branded domains, QR codes, landing
 pages, campaigns, webhooks, and a public REST API.
 
@@ -8,7 +14,22 @@ trial clock, and nothing that talks to a third party unless you point it
 at something. The click goes straight to the destination: no page in
 between, no ad, no countdown. The link you printed still works.
 
-## What it does
+> **[Live demo →](https://steadlink.pages.dev)** · [Privacy policy](PRIVACY.md)
+
+![The Steadlink dashboard](apps/web/public/steadlink-dashboard.png)
+
+## Contents
+
+- [What it does](#what-it-does)
+- [What is not here yet](#what-is-not-here-yet)
+- [The stack](#the-stack)
+- [Running it with Docker](#running-it-with-docker)
+- [Running it locally](#running-it-locally)
+- [The tests](#the-tests)
+- [The environment](#the-environment)
+- [The access rules](#the-access-rules)
+- [Contributing](#contributing)
+- [Licence](#licence)
 
 - **Short links** on your own domain, with a back-half you choose, and
   filters for everything about them.
@@ -141,6 +162,26 @@ and both halves are proved by tests.
 
 `pnpm test:access` runs both: the policies against the database, and the
 data layer against two workspaces with rows in them.
+
+## Contributing
+
+There is no `CONTRIBUTING.md` yet. In the meantime:
+
+```bash
+pnpm install
+pnpm lint         # biome
+pnpm typecheck
+pnpm test:access  # the access rules, against a real database
+pnpm test:e2e     # the flows, in a browser
+```
+
+The access rules are the part to be careful with. Any new query that reaches a
+workspace's private material has to scope itself, or it returns nothing rather
+than everything — that is deliberate, and `pnpm test:access` is what proves it.
+
+Issues and pull requests are welcome.
+
+---
 
 ## Licence
 
