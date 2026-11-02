@@ -31,6 +31,8 @@ between, no ad, no countdown. The link you printed still works.
 - [Contributing](#contributing)
 - [Licence](#licence)
 
+## What it does
+
 - **Short links** on your own domain, with a back-half you choose, and
   filters for everything about them.
 - **Groups**, so one workspace can keep several sets of links apart, and
